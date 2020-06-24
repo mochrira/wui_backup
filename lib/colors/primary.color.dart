@@ -12,7 +12,7 @@ ThemeData wuiThemeData = ThemeData(
       color: Colors.black
     ),
     iconTheme: IconThemeData(
-      color: Colors.black54
+      color: Colors.black
     )
   ),
   textTheme: TextTheme(

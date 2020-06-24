@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class WuiLargeButton extends StatelessWidget {
 
-  Widget child;
-  Function onPressed;
+  final Widget child;
+  final Function onPressed;
   WuiLargeButton({
     this.child,
     this.onPressed
