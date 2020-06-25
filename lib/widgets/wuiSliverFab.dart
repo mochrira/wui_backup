@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 class WuiSliverFab extends StatelessWidget {
 
   final ScrollController controller;
+  final Function onPressed;
+  final String heroTag;
 
   WuiSliverFab({
-    this.controller
+    this.controller,
+    this.onPressed,
+    this.heroTag
   });
 
   _buildFab(BuildContext context) {
@@ -34,11 +38,12 @@ class WuiSliverFab extends StatelessWidget {
         transform: Matrix4.identity()..scale(scale),
         alignment: Alignment.center,
         child: FloatingActionButton(
+          heroTag: heroTag,
           elevation: 4,
           shape: CircleBorder(),
           child: Icon(Icons.add, color: Colors.deepPurple, size: 28),
           backgroundColor: Colors.white,
-          onPressed: () {},
+          onPressed: onPressed,
         ),
       )
     );

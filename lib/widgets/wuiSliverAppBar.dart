@@ -3,9 +3,9 @@ import 'package:wui/widgets/wuiPageTitle.dart';
 
 class WuiSliverAppBar extends StatelessWidget {
 
-  List<Widget> actions;
-  String title;
-  String subTitle;
+  final List<Widget> actions;
+  final String title;
+  final String subTitle;
 
   WuiSliverAppBar({
     this.title,

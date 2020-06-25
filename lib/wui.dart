@@ -7,3 +7,4 @@ export 'widgets/wuiSliverFab.dart';
 export 'widgets/wuiSliverAppBar.dart';
 export 'widgets/wuiSliverListItem.dart';
 export 'widgets/wuiSliverList.dart';
+export 'widgets/wuiSelectField.dart';

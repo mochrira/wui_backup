@@ -2,38 +2,26 @@ import 'package:flutter/material.dart';
 
 ThemeData wuiThemeData = ThemeData(
   primarySwatch: Colors.deepPurple,
-  dialogBackgroundColor: Colors.white,
-  dialogTheme: DialogTheme(
-    elevation: 0
-  ),
   appBarTheme: AppBarTheme(
     color: Colors.white,
-    actionsIconTheme: IconThemeData(
-      color: Colors.black
-    ),
     iconTheme: IconThemeData(
-      color: Colors.black
+      color: Colors.black87
+    ),
+    textTheme: TextTheme(
+      headline6: TextStyle(
+        fontFamily: "Product Sans",
+        fontSize: 22
+      )
     )
   ),
   textTheme: TextTheme(
-    subtitle1: TextStyle(
-      color: Colors.grey[700]
+    headline4: TextStyle(
+      fontSize: 32,
+      color: Colors.black87
     ),
     bodyText2: TextStyle(
-      color: Colors.grey[800]
-    ),
-    button: TextStyle(
-      fontWeight: FontWeight.normal,
-      fontSize: 16
+      fontSize: 16,
+      color: Colors.black87
     )
-  ),
-  inputDecorationTheme: InputDecorationTheme(
-    border: UnderlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-      borderSide: BorderSide.none
-    ),
-    fillColor: Colors.grey[200],
-    hoverColor: Colors.white,
-    filled: true,
   )
 );
