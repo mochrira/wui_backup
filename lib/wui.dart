@@ -8,3 +8,7 @@ export 'widgets/wuiSliverAppBar.dart';
 export 'widgets/wuiSliverListItem.dart';
 export 'widgets/wuiSliverList.dart';
 export 'widgets/wuiSelectField.dart';
+export 'widgets/wuiLoadingDialog.dart';
+export 'widgets/wuiBarFlatButton.dart';
+export 'widgets/wuiBottomSheet.dart';
+export 'widgets/wuiDialog.dart';

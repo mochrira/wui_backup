@@ -7,8 +7,10 @@ class WuiSelectField extends StatelessWidget {
   final InputDecoration decoration;
   final Function onChange;
   final int selected;
+  final bool enabled;
 
   WuiSelectField({
+    this.enabled,
     this.selected,
     this.options,
     this.decoration,
@@ -22,6 +24,7 @@ class WuiSelectField extends StatelessWidget {
     controller.text = selected >= 0 ? options[selected] : '';
     return Container(
       child: TextField(
+        enabled: enabled ?? false,
         controller: controller,
         decoration: decoration.copyWith(
           suffixIcon: Icon(Icons.keyboard_arrow_down)

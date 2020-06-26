@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class WuiSliverListItem extends StatelessWidget {
 
   final Widget child;
+  final Function onTap;
 
   WuiSliverListItem({
-    this.child
+    this.child,
+    this.onTap
   });
 
   @override
@@ -19,7 +21,7 @@ class WuiSliverListItem extends StatelessWidget {
         child: ListTile(
           trailing: Icon(Icons.more_horiz),
           title: child,
-          onTap: () {},
+          onTap: onTap,
         )
       ),
     );
