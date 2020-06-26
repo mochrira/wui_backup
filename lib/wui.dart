@@ -12,3 +12,4 @@ export 'widgets/wuiLoadingDialog.dart';
 export 'widgets/wuiBarFlatButton.dart';
 export 'widgets/wuiBottomSheet.dart';
 export 'widgets/wuiDialog.dart';
+export 'widgets/wuiSnackbar.dart';

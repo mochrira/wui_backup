@@ -21,10 +21,12 @@ class WuiSelectField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.text = selected >= 0 ? options[selected] : '';
+    if(selected != null) {
+      controller.text = selected >= 0 ? options[selected] : '';
+    }
     return Container(
       child: TextField(
-        enabled: enabled ?? false,
+        enabled: enabled ?? true,
         controller: controller,
         decoration: decoration.copyWith(
           suffixIcon: Icon(Icons.keyboard_arrow_down)
