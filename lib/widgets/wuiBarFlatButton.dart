@@ -4,7 +4,9 @@ class WuiBarFlatButton extends StatelessWidget {
 
   final Widget child;
   final Function onPressed;
+  final bool enable;
   WuiBarFlatButton({
+    this.enable = true,
     this.child,
     this.onPressed
   });
@@ -27,7 +29,7 @@ class WuiBarFlatButton extends StatelessWidget {
             highlightColor: Colors.deepPurple[50],
             padding: EdgeInsets.all(8),
             child: child,
-            onPressed: onPressed,
+            onPressed: enable == true ? onPressed : null,
           )
         ),
       ),

@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 
 class WuiDialog {
 
-  static Future<dynamic> open({
-    @required BuildContext context,
+  static Future<dynamic> open(BuildContext context, {
     @required dynamic title,
     @required dynamic message,
     @required List<dynamic> actions,
-    @required int defaultAction
+    int defaultAction
   }) async {
     
     return await showDialog(
