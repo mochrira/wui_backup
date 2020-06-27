@@ -15,17 +15,10 @@ class WuiSliverList extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (_, index) {
           Widget item = builder(context, index);
-          
-          if(index == 0) {
-            return Padding(
-              padding: EdgeInsets.only(top: 28),
-              child: item
-            );
-          }
 
           if(index == itemCount - 1) {
             return Padding(
-              padding: EdgeInsets.only(bottom: 48),
+              padding: EdgeInsets.only(bottom: 8),
               child: item
             );
           }

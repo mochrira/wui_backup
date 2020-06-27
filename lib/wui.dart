@@ -5,7 +5,7 @@ export 'widgets/wuiPageTitle.dart';
 export 'widgets/wuiLargeButton.dart';
 export 'widgets/wuiSliverFab.dart';
 export 'widgets/wuiSliverAppBar.dart';
-export 'widgets/wuiSliverListItem.dart';
+export 'widgets/wuiListItem.dart';
 export 'widgets/wuiSliverList.dart';
 export 'widgets/wuiSelectField.dart';
 export 'widgets/wuiLoadingDialog.dart';

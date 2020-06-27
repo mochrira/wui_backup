@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class WuiSliverListItem extends StatelessWidget {
+class WuiListItem extends StatelessWidget {
 
   final Widget child;
   final Function onTap;
 
-  WuiSliverListItem({
+  WuiListItem({
     this.child,
     this.onTap
   });
@@ -19,6 +19,7 @@ class WuiSliverListItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         color: Colors.white,
         child: ListTile(
+          contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           trailing: Icon(Icons.more_horiz),
           title: child,
           onTap: onTap,

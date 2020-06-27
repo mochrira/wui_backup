@@ -6,33 +6,47 @@ class WuiSliverAppBar extends StatelessWidget {
   final List<Widget> actions;
   final String title;
   final String subTitle;
+  final Widget bottom;
+  final bool showExpandedArea;
+  final Widget leading;
+  final Widget titleWidget;
 
   WuiSliverAppBar({
     this.title,
     this.subTitle,
-    this.actions
+    this.actions,
+    this.bottom,
+    this.showExpandedArea = true,
+    this.leading,
+    this.titleWidget
   });
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      actions: actions,
-      centerTitle: true,
-      pinned: true,
-      elevation: 2,
-      expandedHeight: MediaQuery.of(context).size.width / 4 * 3,
-      flexibleSpace: FlexibleSpaceBar(
-        background: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(24),
-            child: Center(
-              child: WuiPageTitle(
-                title: title,
-                subTitle: subTitle,
-              )
-            )),
+    return ButtonTheme(
+      minWidth: double.minPositive,
+      child: SliverAppBar(
+        title: titleWidget,
+        actions: actions,
+        centerTitle: true,
+        pinned: true,
+        elevation: 2,
+        bottom: bottom,
+        leading: leading,
+        expandedHeight: showExpandedArea ? MediaQuery.of(context).size.width / 4 * 3 : 0,
+        flexibleSpace: FlexibleSpaceBar(
+          background: SafeArea(
+            child: Container(
+              padding: EdgeInsets.all(24),
+              child: Center(
+                child: WuiPageTitle(
+                  title: title,
+                  subTitle: subTitle,
+                )
+              )),
+          )
         )
-      )
+      ),
     );
   }
 }

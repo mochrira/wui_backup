@@ -9,7 +9,14 @@ class WuiSnackBar {
     Scaffold.of(context).hideCurrentSnackBar();
     Scaffold.of(context).showSnackBar(SnackBar(
       content: content is Widget ? content: Text(content),
-      behavior: SnackBarBehavior.floating
+      behavior: SnackBarBehavior.floating,
+      action: SnackBarAction(
+        label: "DISMISS",
+        textColor: Colors.white,
+        onPressed: () {
+          Scaffold.of(context).hideCurrentSnackBar();
+        },
+      )
     ));
   }
   

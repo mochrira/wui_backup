@@ -14,6 +14,13 @@ ThemeData wuiThemeData = ThemeData(
       )
     )
   ),
+  tabBarTheme: TabBarTheme(
+    labelColor: Colors.black87,
+  ),
+  bottomAppBarColor: Colors.white,
+  bottomAppBarTheme: BottomAppBarTheme(
+    color: Colors.white
+  ),
   textTheme: TextTheme(
     headline4: TextStyle(
       fontSize: 32,
