@@ -39,7 +39,7 @@ class WuiDrawerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       height: 48,
       child: RawMaterialButton(
         fillColor: (active == true ? 
@@ -162,6 +162,7 @@ class WuiDrawerHeader extends StatelessWidget {
             )
           ),
         ),
+        Divider()
       ],
     );
   }
