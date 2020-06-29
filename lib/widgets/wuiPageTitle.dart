@@ -22,12 +22,12 @@ class WuiPageTitle extends StatelessWidget {
           fontFamily: "Product Sans"
         )),
         SizedBox(height: 8),
-        Container(
+        ...(subTitle != null ? [Container(
           constraints: BoxConstraints(
             maxWidth: 256
           ),
           child: Text(subTitle, style: TextStyle(fontSize: 16), textAlign: TextAlign.center)
-        )
+        )] : [])
       ],
     );
 
