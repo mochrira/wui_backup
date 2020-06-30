@@ -9,6 +9,7 @@ class WuiDrawerItem {
   WuiDrawerItemType type;
   String captionText;
   Icon icon;
+  String routeName;
   Function onPressed;
   bool active;
 
@@ -16,6 +17,7 @@ class WuiDrawerItem {
     this.type,
     this.captionText,
     this.icon,
+    this.routeName,
     this.onPressed,
     this.active
   });
@@ -192,7 +194,7 @@ class WuiDrawer extends StatefulWidget {
 
 class _WuiDrawerState extends State<WuiDrawer> {
 
-  ConfigService _configService = ConfigService();
+  WuiConfigService _configService = WuiConfigService();
   WuiDrawerMenuType _menuType;
 
   int _getItemCount() {
@@ -211,22 +213,20 @@ class _WuiDrawerState extends State<WuiDrawer> {
     );
   }
 
-  bool _isActive(index) {
-    if(_configService.getValue('wuiDrawerMenuType') != _menuType) {
-      return false;
-    }
-    
-    if(_configService.getValue('wuiDrawerMenuType') == WuiDrawerMenuType.main) {
-      return (_configService.getValue('wuiDrawerMainSelected') == index);
-    } else {
-      return (_configService.getValue('wuiDrawerUserSelected') == index);
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    _menuType = _configService.getValue('wuiDrawerMenuType') ?? WuiDrawerMenuType.main;
+    if(widget.mainMenu.where((element) => 
+      element.routeName == _configService.getValue('wuiDrawerCurrentRoute')
+    ).length>0) {
+      _menuType = WuiDrawerMenuType.main;
+    }
+
+    if(widget.userMenu.where((element) => 
+      element.routeName == _configService.getValue('wuiDrawerCurrentRoute')
+    ).length>0) {
+      _menuType = WuiDrawerMenuType.user;
+    }
   }
 
   @override
@@ -251,7 +251,10 @@ class _WuiDrawerState extends State<WuiDrawer> {
                 menuType: _menuType,
                 onPressed: () {
                   setState(() {
-                    _menuType = (_menuType == WuiDrawerMenuType.main ? WuiDrawerMenuType.user : WuiDrawerMenuType.main);
+                    _menuType = (_menuType == WuiDrawerMenuType.main ? 
+                      WuiDrawerMenuType.user : 
+                      WuiDrawerMenuType.main
+                    );
                   });
                 },
               );
@@ -262,18 +265,13 @@ class _WuiDrawerState extends State<WuiDrawer> {
               return WuiDrawerButton(
                 caption: items[currentIndex].captionText,
                 icon: items[currentIndex].icon,
-                active: _isActive(currentIndex),
+                active: items[currentIndex].routeName == _configService.getValue('wuiDrawerCurrentRoute'),
                 onPressed: () {
-                  _configService.addValue('wuiDrawerMenuType', _menuType);
-                  if(_menuType == WuiDrawerMenuType.main) {
-                    _configService.addValue('wuiDrawerMainSelected', currentIndex);
-                  } else {
-                    _configService.addValue('wuiDrawerUserSelected', currentIndex);
-                  }
-                  setState(() {});
-                  Navigator.of(context).pop();
-                  if(items[currentIndex].onPressed != null) {
-                    items[currentIndex].onPressed();
+                  if(items[currentIndex].routeName != null) {
+                    _configService.addValue('wuiDrawerCurrentRoute', items[currentIndex].routeName);
+                    Navigator.of(context).pushReplacementNamed(
+                      items[currentIndex].routeName
+                    );
                   }
                 }
               );

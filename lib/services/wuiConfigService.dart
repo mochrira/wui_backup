@@ -1,8 +1,8 @@
-class ConfigService {
+class WuiConfigService {
 
-  static ConfigService _instance = ConfigService._internal();
-  ConfigService._internal();
-  factory ConfigService() {
+  static WuiConfigService _instance = WuiConfigService._internal();
+  WuiConfigService._internal();
+  factory WuiConfigService() {
     return _instance;
   }
 

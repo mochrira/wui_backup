@@ -1,8 +1,7 @@
 library wui;
 
 export 'colors/primary.color.dart';
-
-export 'services/config.service.dart';
+export 'services/wuiConfigService.dart';
 
 export 'widgets/wuiPageTitle.dart';
 export 'widgets/wuiLargeButton.dart';
@@ -22,3 +21,4 @@ export 'widgets/wuiDialog.dart';
 export 'widgets/wuiSnackbar.dart';
 
 export 'widgets/wuiDrawer.dart';
+export 'services/wuiStreamService.dart';

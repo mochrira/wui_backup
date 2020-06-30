@@ -4,9 +4,11 @@ class WuiListItem extends StatelessWidget {
 
   final Widget child;
   final Function onTap;
+  final Widget trailing;
 
   WuiListItem({
     this.child,
+    this.trailing,
     this.onTap
   });
 
@@ -20,7 +22,7 @@ class WuiListItem extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          trailing: Icon(Icons.more_horiz),
+          trailing: trailing,
           title: child,
           onTap: onTap,
         )
