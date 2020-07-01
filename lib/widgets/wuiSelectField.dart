@@ -5,7 +5,7 @@ class WuiSelectField extends StatelessWidget {
 
   final List<String> options;
   final InputDecoration decoration;
-  final Function onChange;
+  final Function(int index) onChange;
   final int selected;
   final bool enabled;
 

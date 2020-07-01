@@ -28,7 +28,7 @@ class WuiListItem extends StatelessWidget {
         color: Colors.white,
         child: RawMaterialButton(
           constraints: BoxConstraints(
-            minHeight: 72
+            minHeight: 64
           ),
           padding: EdgeInsets.symmetric(horizontal: 16),
           onPressed: onTap,
