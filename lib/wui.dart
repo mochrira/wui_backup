@@ -1,7 +1,8 @@
 library wui;
-
 export 'colors/primary.color.dart';
+
 export 'services/wuiConfigService.dart';
+export 'services/wuiStreamService.dart';
 
 export 'widgets/wuiPageTitle.dart';
 export 'widgets/wuiLargeButton.dart';
@@ -20,5 +21,7 @@ export 'widgets/wuiBottomSheet.dart';
 export 'widgets/wuiDialog.dart';
 export 'widgets/wuiSnackbar.dart';
 
-export 'widgets/wuiDrawer.dart';
-export 'services/wuiStreamService.dart';
+export 'widgets/drawer/wuiDrawerButton.dart';
+export 'widgets/drawer/wuiDrawerHeader.dart';
+export 'widgets/drawer/wuiDrawerType.dart';
+export 'widgets/drawer/wuiDrawer.dart';
