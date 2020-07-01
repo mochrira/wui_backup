@@ -29,6 +29,9 @@ ThemeData wuiThemeData = ThemeData(
     bodyText2: TextStyle(
       fontSize: 16,
       color: Colors.black87
+    ),
+    subtitle1: TextStyle(
+      fontSize: 16
     )
   )
 );

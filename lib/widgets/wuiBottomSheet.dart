@@ -23,7 +23,7 @@ class WuiBottomSheetItem {
 
 class WuiModalBottomSheet {
 
-  static open({
+  static Future<int> open({
     @required BuildContext context,
     bool useRootNavigator = true,
     List<WuiBottomSheetItem> actions

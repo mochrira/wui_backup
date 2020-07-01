@@ -4,12 +4,12 @@ class WuiSnackBar {
 
   static open(BuildContext context, {
     dynamic content,
-    bool rootNavigator = true
+    bool rootNavigator = false
   }) {
     Scaffold.of(context).hideCurrentSnackBar();
     Scaffold.of(context).showSnackBar(SnackBar(
       content: content is Widget ? content: Text(content),
-      behavior: SnackBarBehavior.floating,
+      behavior: SnackBarBehavior.fixed,
       action: SnackBarAction(
         label: "DISMISS",
         textColor: Colors.white,
