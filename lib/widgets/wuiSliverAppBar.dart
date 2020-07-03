@@ -37,7 +37,7 @@ class WuiSliverAppBar extends StatelessWidget {
         flexibleSpace: FlexibleSpaceBar(
           background: SafeArea(
             child: Container(
-              padding: EdgeInsets.all(24),
+              padding: EdgeInsets.fromLTRB(24, 80, 24, 24),
               child: Center(
                 child: WuiPageTitle(
                   title: title,

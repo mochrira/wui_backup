@@ -23,7 +23,7 @@ class WuiDialog {
               textTheme: defaultAction == index ? ButtonTextTheme.primary : ButtonTextTheme.normal,
               child: Text(actions[index]),
               onPressed: () {
-                Navigator.of(context, rootNavigator: true).pop(index);
+                Navigator.of(context).pop(index);
               },
             );
           }

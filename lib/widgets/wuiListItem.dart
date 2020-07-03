@@ -8,6 +8,7 @@ class WuiListItem extends StatelessWidget {
   final Widget title;
   final Widget subtitle;
   final Widget leading;
+  final bool isDense;
 
   WuiListItem({
     this.title,
@@ -15,7 +16,8 @@ class WuiListItem extends StatelessWidget {
     this.trailing,
     this.onTap,
     this.subtitle,
-    this.leading
+    this.leading,
+    this.isDense
   });
 
   @override
@@ -28,7 +30,7 @@ class WuiListItem extends StatelessWidget {
         color: Colors.white,
         child: RawMaterialButton(
           constraints: BoxConstraints(
-            minHeight: 64
+            minHeight: isDense ?? false ? 48 : 64
           ),
           padding: EdgeInsets.symmetric(horizontal: 16),
           onPressed: onTap,
@@ -49,8 +51,7 @@ class WuiListItem extends StatelessWidget {
                     SizedBox(height: 4),
                     (subtitle is Text ? Text(
                       (subtitle as Text).data, style: Theme.of(context).textTheme.bodyText2.copyWith(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600
+                        fontSize: 14
                       )
                     ) : subtitle) ?? Container()
                   ],
