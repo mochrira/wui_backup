@@ -50,9 +50,10 @@ class WuiDrawer extends StatelessWidget {
                   top: 14, bottom: 8, right: 16, left: 16
                 ),
                 child: Text(value.captionText, 
-                  style: TextStyle(
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
                     color: Colors.black54,
-                    fontWeight: FontWeight.w500
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14
                   )
                 )
               );

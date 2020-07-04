@@ -18,9 +18,11 @@ class WuiPageTitle extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text(title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline4.copyWith(
-          fontFamily: "Product Sans"
-        )),
+        ...(title != null ? [
+          Text(title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline4.copyWith(
+            fontFamily: "Product Sans"
+          ))
+        ] : []),
         SizedBox(height: 8),
         ...(subTitle != null ? [Container(
           constraints: BoxConstraints(

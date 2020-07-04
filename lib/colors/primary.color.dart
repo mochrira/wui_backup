@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 ThemeData wuiThemeData = ThemeData(
+  scaffoldBackgroundColor: Colors.white,
   primarySwatch: Colors.deepPurple,
   appBarTheme: AppBarTheme(
     color: Colors.white,

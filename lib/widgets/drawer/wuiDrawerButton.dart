@@ -46,7 +46,8 @@ class WuiDrawerButton extends StatelessWidget {
             Text(caption, 
               style: Theme.of(context).textTheme.bodyText2.copyWith(
                 color: (active ?? false) ? Colors.deepPurple : Colors.black.withOpacity(.8),
-                fontWeight: FontWeight.w500
+                fontWeight: FontWeight.w500,
+                fontSize: 14
               )
             )
           ],

@@ -9,12 +9,11 @@ class WuiLoadingDialog {
   factory WuiLoadingDialog() {
     return _instance;
   }
-
-  static BuildContext _context;
   static StreamController _messageStream;
   static bool _lock = false;
+  static BuildContext _context;
 
-  static open({ @required BuildContext context, String message }) {
+  static open(BuildContext context, { String message }) {
     _context = context;
     _messageStream = StreamController();
     _lock = true;
