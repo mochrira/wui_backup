@@ -23,7 +23,7 @@ class WuiListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+      padding: EdgeInsets.fromLTRB(8, isDense ?? false ? 0 : 8, 8, 0),
       child: Material(
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
@@ -48,7 +48,7 @@ class WuiListItem extends StatelessWidget {
                     (title is Text ? Text(
                       (title as Text).data, style: Theme.of(context).textTheme.bodyText2.copyWith()
                     ) : title) ?? Container(),
-                    SizedBox(height: 4),
+                    ...(subtitle != null ? [SizedBox(height: 4)] : []),
                     (subtitle is Text ? Text(
                       (subtitle as Text).data, style: Theme.of(context).textTheme.bodyText2.copyWith(
                         fontSize: 14
