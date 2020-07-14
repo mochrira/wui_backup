@@ -18,7 +18,7 @@ class WuiDrawerButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-      height: 48,
+      height: 40,
       child: RawMaterialButton(
         fillColor: ((active ?? false) == true ? 
           Colors.deepPurple.withOpacity(.2) : 
@@ -35,10 +35,11 @@ class WuiDrawerButton extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(right: 24),
+              padding: EdgeInsets.only(right: 20),
               child: IconTheme(
                 data: IconThemeData(
-                  color: (active ?? false) ? Colors.deepPurple : Colors.black.withOpacity(.8)
+                  color: (active ?? false) ? Colors.deepPurple : Colors.black.withOpacity(.8),
+                  size: 24
                 ),
                 child: icon
               )
