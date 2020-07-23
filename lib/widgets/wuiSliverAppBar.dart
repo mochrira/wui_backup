@@ -5,7 +5,7 @@ class WuiSliverAppBar extends StatelessWidget {
 
   final List<Widget> actions;
   final String title;
-  final String subTitle;
+  final dynamic subTitle;
   final Widget bottom;
   final bool showExpandedArea;
   final Widget leading;

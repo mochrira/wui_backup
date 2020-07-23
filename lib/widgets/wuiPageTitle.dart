@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class WuiPageTitle extends StatelessWidget {
 
   final String title;
-  final String subTitle;
+  final dynamic subTitle;
   final TextStyle titleTextStyle;
 
   WuiPageTitle({
@@ -28,7 +28,7 @@ class WuiPageTitle extends StatelessWidget {
           constraints: BoxConstraints(
             maxWidth: 256
           ),
-          child: Text(subTitle, style: TextStyle(fontSize: 16), textAlign: TextAlign.center)
+          child: (subTitle is String) ? Text(subTitle, style: TextStyle(fontSize: 16), textAlign: TextAlign.center) : subTitle
         )] : [])
       ],
     );
