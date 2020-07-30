@@ -18,7 +18,7 @@ class WuiDrawerButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-      height: 40,
+      height: 48,
       child: RawMaterialButton(
         fillColor: ((active ?? false) == true ? 
           Colors.deepPurple.withOpacity(.2) : 
