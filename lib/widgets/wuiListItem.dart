@@ -46,7 +46,7 @@ class WuiListItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     (title is Text ? Text(
-                      (title as Text).data, style: Theme.of(context).textTheme.bodyText2.copyWith()
+                      (title as Text).data, style: Theme.of(context).textTheme.bodyText1.copyWith()
                     ) : title) ?? Container(),
                     ...(subtitle != null ? [SizedBox(height: 4)] : []),
                     (subtitle is Text ? Text(

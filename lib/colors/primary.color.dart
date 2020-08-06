@@ -1,38 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData wuiThemeData = ThemeData(
   scaffoldBackgroundColor: Colors.white,
-  primarySwatch: Colors.deepPurple,
   appBarTheme: AppBarTheme(
+    textTheme: TextTheme(
+      headline6: GoogleFonts.nunito(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        color: Colors.black87
+      )
+    ),
+    elevation: 0,
     color: Colors.white,
+    actionsIconTheme: IconThemeData(
+      color: Colors.black87
+    ),
     iconTheme: IconThemeData(
       color: Colors.black87
-    ),
-    textTheme: TextTheme(
-      headline6: TextStyle(
-        fontFamily: "Product Sans",
-        fontSize: 22
-      )
     )
   ),
-  tabBarTheme: TabBarTheme(
-    labelColor: Colors.black87,
+  buttonTheme: ButtonThemeData(
+    textTheme: ButtonTextTheme.primary
   ),
-  bottomAppBarColor: Colors.white,
-  bottomAppBarTheme: BottomAppBarTheme(
-    color: Colors.white
-  ),
+  primarySwatch: Colors.deepPurple,
   textTheme: TextTheme(
+    subtitle1: GoogleFonts.nunito().copyWith(
+      color: Colors.black87,
+      fontWeight: FontWeight.w600
+    ),
+    subtitle2: GoogleFonts.nunito().copyWith(
+      color: Colors.black54
+    ),
     headline4: TextStyle(
-      fontSize: 32,
       color: Colors.black87
     ),
-    bodyText2: TextStyle(
-      fontSize: 16,
+    bodyText2: GoogleFonts.nunito().copyWith(
       color: Colors.black87
     ),
-    subtitle1: TextStyle(
-      fontSize: 16
-    )
+    button: GoogleFonts.nunito()
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    labelStyle: GoogleFonts.nunito(fontWeight: FontWeight.w600),
+    
   )
 );

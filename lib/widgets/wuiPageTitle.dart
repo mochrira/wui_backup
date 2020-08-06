@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class WuiPageTitle extends StatelessWidget {
 
@@ -19,9 +20,10 @@ class WuiPageTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         ...(title != null ? [
-          Text(title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline4.copyWith(
-            fontFamily: "Product Sans"
-          ))
+          Text(title, 
+            textAlign: TextAlign.center, 
+            style: Theme.of(context).textTheme.headline4.merge(GoogleFonts.nunito())
+          )
         ] : []),
         SizedBox(height: 8),
         ...(subTitle != null ? [Container(
