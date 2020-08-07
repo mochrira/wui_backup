@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ThemeData wuiThemeData = ThemeData(
-  scaffoldBackgroundColor: Colors.white,
+  scaffoldBackgroundColor: Color(0xFFECEFF1),
   appBarTheme: AppBarTheme(
     textTheme: TextTheme(
       headline6: GoogleFonts.nunito(
@@ -26,22 +26,21 @@ ThemeData wuiThemeData = ThemeData(
   primarySwatch: Colors.deepPurple,
   textTheme: TextTheme(
     subtitle1: GoogleFonts.nunito().copyWith(
-      color: Colors.black87,
-      fontWeight: FontWeight.w600
+      color: Colors.black.withOpacity(.80)
     ),
     subtitle2: GoogleFonts.nunito().copyWith(
-      color: Colors.black54
+      color: Colors.black.withOpacity(.64)
     ),
     headline4: TextStyle(
-      color: Colors.black87
+      color: Colors.black.withOpacity(.70)
     ),
     bodyText2: GoogleFonts.nunito().copyWith(
-      color: Colors.black87
+      color: Colors.black.withOpacity(.70)
     ),
-    button: GoogleFonts.nunito()
+    button: GoogleFonts.nunito(),
+    
   ),
   inputDecorationTheme: InputDecorationTheme(
-    labelStyle: GoogleFonts.nunito(fontWeight: FontWeight.w600),
-    
+    labelStyle: GoogleFonts.nunito(),
   )
 );

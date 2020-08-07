@@ -2,6 +2,7 @@ library wui;
 export 'colors/primary.color.dart';
 
 export 'widgets/wuiBlock.dart';
+export 'widgets/wuiBadge.dart';
 
 export 'services/wuiConfigService.dart';
 export 'services/wuiStreamService.dart';

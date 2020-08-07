@@ -1,51 +1,99 @@
 import 'package:flutter/material.dart';
 import 'package:wui/widgets/wuiPageTitle.dart';
 
-class WuiSliverAppBar extends StatelessWidget {
+class WuiSliverAppBar extends StatefulWidget {
 
   final List<Widget> actions;
-  final String title;
-  final dynamic subTitle;
-  final Widget bottom;
-  final bool showExpandedArea;
-  final Widget leading;
-  final Widget titleWidget;
+  final Widget title;
+  final Widget subtitle;
+  final ScrollController controller;
 
   WuiSliverAppBar({
+    @required this.controller,
     this.title,
-    this.subTitle,
-    this.actions,
-    this.bottom,
-    this.showExpandedArea = true,
-    this.leading,
-    this.titleWidget
+    this.subtitle,
+    this.actions
   });
 
   @override
+  _WuiSliverAppBarState createState() => _WuiSliverAppBarState();
+}
+
+class _WuiSliverAppBarState extends State<WuiSliverAppBar> with SingleTickerProviderStateMixin {
+
+  bool _visible = false;
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      animationBehavior: AnimationBehavior.normal,
+      vsync: this
+    );
+    widget.controller.addListener(() { 
+      if(widget.controller.offset >= 244) {
+        if(_visible == false) {
+          setState(() { _visible = true; });
+          _animationController.forward();
+        }
+      } else {
+        if(_visible == true) {
+          setState(() { _visible = false; });
+          _animationController.reverse();
+        }
+      }
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ButtonTheme(
-      minWidth: double.minPositive,
-      child: SliverAppBar(
-        title: titleWidget,
-        actions: actions,
-        centerTitle: true,
-        pinned: true,
-        elevation: 2,
-        bottom: bottom,
-        leading: leading,
-        expandedHeight: showExpandedArea ? MediaQuery.of(context).size.width / 4 * 3 : 0,
-        flexibleSpace: FlexibleSpaceBar(
-          background: SafeArea(
-            child: Container(
-              padding: EdgeInsets.fromLTRB(24, 80, 24, 24),
-              child: Center(
-                child: WuiPageTitle(
-                  title: title,
-                  subTitle: subTitle,
-                )
-              )),
-          )
-        )
+    return SliverAppBar(
+      backgroundColor: Colors.white,
+      pinned: true,
+      actions: widget.actions,
+      expandedHeight: 300,
+      title: AnimatedBuilder(
+        animation: _animationController,
+        builder: (context, child) {
+          return Opacity(
+            opacity: _animationController.value,
+            child: Transform.translate(
+              offset: Offset(0, 24 - (_animationController.value * 24)),
+              child: widget.title
+            )
+          );
+        },
+      ),
+      flexibleSpace: FlexibleSpaceBar(
+        background: SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(top: 56),
+            color: Colors.white,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  DefaultTextStyle(
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600
+                    ),
+                    child: widget.title
+                  ),
+                  DefaultTextStyle(
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal
+                    ),
+                    child: widget.subtitle
+                  )
+                ],
+              )
+            )
+          ),
+        ),
       ),
     );
   }
