@@ -14,9 +14,10 @@ class WuiListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Material(
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8)
         ),
@@ -24,7 +25,7 @@ class WuiListTile extends StatelessWidget {
         child: ListTile(
           title: title,
           subtitle: subtitle,
-          onTap: () {},
+          onTap: onTap,
         )
       ),
     );

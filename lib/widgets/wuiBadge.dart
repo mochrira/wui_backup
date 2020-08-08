@@ -42,7 +42,7 @@ class WuiBadge extends StatelessWidget {
 
   _textStyling(context) {
     TextStyle style = Theme.of(context).textTheme.bodyText2.copyWith(
-      fontSize: 10,
+      fontSize: 11,
       color: _getTextColors(theme)
     );
     return DefaultTextStyle(
@@ -58,7 +58,7 @@ class WuiBadge extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
       decoration: BoxDecoration(
         color: _getColors(theme),
-        borderRadius: BorderRadius.circular(8)
+        borderRadius: BorderRadius.circular(16)
       ),
     );
   }

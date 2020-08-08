@@ -28,3 +28,5 @@ export 'widgets/drawer/wuiDrawerButton.dart';
 export 'widgets/drawer/wuiDrawerHeader.dart';
 export 'widgets/drawer/wuiDrawerType.dart';
 export 'widgets/drawer/wuiDrawer.dart';
+
+export 'widgets/wuiList.dart';

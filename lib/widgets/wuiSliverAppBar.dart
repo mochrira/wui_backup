@@ -12,7 +12,7 @@ class WuiSliverAppBar extends StatefulWidget {
     @required this.controller,
     this.title,
     this.subtitle,
-    this.actions
+    this.actions, String subTitle
   });
 
   @override
@@ -70,25 +70,24 @@ class _WuiSliverAppBarState extends State<WuiSliverAppBar> with SingleTickerProv
         background: SafeArea(
           child: Container(
             padding: EdgeInsets.only(top: 56),
-            color: Colors.white,
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  DefaultTextStyle(
+                  widget.title != null ? DefaultTextStyle(
                     style: Theme.of(context).textTheme.bodyText2.copyWith(
                       fontSize: 28,
                       fontWeight: FontWeight.w600
                     ),
                     child: widget.title
-                  ),
-                  DefaultTextStyle(
+                  ) : Container(),
+                  widget.subtitle != null ? DefaultTextStyle(
                     style: Theme.of(context).textTheme.bodyText2.copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.normal
                     ),
                     child: widget.subtitle
-                  )
+                  ) : Container()
                 ],
               )
             )

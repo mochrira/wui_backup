@@ -37,10 +37,11 @@ ThemeData wuiThemeData = ThemeData(
     bodyText2: GoogleFonts.nunito().copyWith(
       color: Colors.black.withOpacity(.70)
     ),
-    button: GoogleFonts.nunito(),
-    
+    button: GoogleFonts.nunito()
   ),
   inputDecorationTheme: InputDecorationTheme(
-    labelStyle: GoogleFonts.nunito(),
+    labelStyle: GoogleFonts.nunito(
+      fontSize: 14
+    )
   )
 );
