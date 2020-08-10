@@ -58,7 +58,7 @@ class WuiBadge extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
       decoration: BoxDecoration(
         color: _getColors(theme),
-        borderRadius: BorderRadius.circular(16)
+        borderRadius: BorderRadius.circular(4)
       ),
     );
   }
