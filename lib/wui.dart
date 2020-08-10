@@ -30,3 +30,4 @@ export 'widgets/drawer/wuiDrawerType.dart';
 export 'widgets/drawer/wuiDrawer.dart';
 
 export 'widgets/wuiList.dart';
+export 'widgets/wuiSelectorButton.dart';

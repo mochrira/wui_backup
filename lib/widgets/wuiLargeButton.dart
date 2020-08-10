@@ -11,20 +11,20 @@ class WuiLargeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+    return RawMaterialButton(
+      padding: EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(32)
+        borderRadius: BorderRadius.circular(8)
       ),
-      color: Colors.deepPurple,
-      child: Theme(
-        data: ThemeData(
-          textTheme: TextTheme(
-            bodyText2: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.white)
-          )
+      child: DefaultTextStyle(
+        style: Theme.of(context).textTheme.bodyText2.copyWith(
+          color: onPressed != null ? Colors.white : Colors.grey[100],
+          fontWeight: FontWeight.w500,
+          fontSize: 16
         ),
         child: child
       ),
+      fillColor: onPressed != null ? Colors.deepPurple : Colors.deepPurple[200],
       onPressed: onPressed,
     );
   }

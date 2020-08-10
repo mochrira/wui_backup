@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:wui/widgets/wuiListItem.dart';
 
 class WuiBottomSheetItem {
 
   final Widget child;
   final Widget trailing;
   final Widget leading;
+  final Widget title;
+  final Widget subtitle;
   final bool danger;
   final Function onPressed;
   dynamic value;
@@ -13,6 +16,8 @@ class WuiBottomSheetItem {
     this.leading,
     this.trailing,
     this.child,
+    this.title,
+    this.subtitle,
     this.danger = false,
     this.onPressed,
     this.value
@@ -22,8 +27,8 @@ class WuiBottomSheetItem {
 
 class WuiModalBottomSheet {
 
-  static Future<int> open({
-    @required BuildContext context,
+  static Future<int> open(BuildContext context, {
+    Widget title,
     bool useRootNavigator = true,
     List<WuiBottomSheetItem> actions
   }) async {
@@ -33,63 +38,31 @@ class WuiModalBottomSheet {
       backgroundColor: Colors.transparent,
       builder: (_) {
         return Container(
-          padding: EdgeInsets.only(bottom: 8),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16)
-            )
-          ),
+          color: Colors.white,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                padding: EdgeInsets.all(10),
-                child: Center(
-                  child: Container(
-                    width: 50,
-                    height: 6,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(3)
-                    ),
-                  )
-                )
-              ),
+              (title != null ? Padding(
+                padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
+                child: DefaultTextStyle(child: title, style: Theme.of(context).textTheme.bodyText2.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ))
+              ) : Container()),
               ...(actions.asMap().map((index, item) {
-                return MapEntry(index, Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                  child: RawMaterialButton(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 12, 
-                      horizontal: 8
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.only(right: 16),
-                          child: item.leading != null ? Padding(
-                            padding: EdgeInsets.only(left: 8),
-                            child: item.leading
-                          ) : null
-                        ),
-                        Expanded(
-                          child: item.child
-                        ),
-                        item.trailing ?? Container(),
-                      ],
-                    ),
-                    onPressed: item.onPressed ?? () {
-                      Navigator.of(context, 
-                        rootNavigator: useRootNavigator)
-                      .pop(item.value ?? index);
-                    },
+                return MapEntry(index, WuiListTile(
+                  isDense: true,
+                  leading: item.leading,
+                  title: item.title,
+                  subtitle: item.subtitle,
+                  trailing: item.trailing,
+                  titleTextStyle: TextStyle(
+                    fontWeight: FontWeight.w500
                   ),
+                  onTap: () {
+                    Navigator.of(context).pop(index);
+                  },
                 ));
               }).values.toList())
             ],

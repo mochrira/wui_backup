@@ -7,12 +7,15 @@ class WuiSliverAppBar extends StatefulWidget {
   final Widget title;
   final Widget subtitle;
   final ScrollController controller;
+  final Widget child;
 
   WuiSliverAppBar({
     @required this.controller,
     this.title,
     this.subtitle,
-    this.actions, String subTitle
+    this.actions, 
+    String subTitle,
+    this.child
   });
 
   @override
@@ -68,20 +71,22 @@ class _WuiSliverAppBarState extends State<WuiSliverAppBar> with SingleTickerProv
       ),
       flexibleSpace: FlexibleSpaceBar(
         background: SafeArea(
-          child: Container(
+          child: widget.child ?? Container(
             padding: EdgeInsets.only(top: 56),
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   widget.title != null ? DefaultTextStyle(
-                    style: Theme.of(context).textTheme.bodyText2.copyWith(
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(                      
                       fontSize: 28,
                       fontWeight: FontWeight.w600
                     ),
                     child: widget.title
                   ) : Container(),
                   widget.subtitle != null ? DefaultTextStyle(
+                    textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyText2.copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.normal
