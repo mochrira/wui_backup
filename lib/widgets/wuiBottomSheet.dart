@@ -58,7 +58,7 @@ class WuiModalBottomSheet {
                   subtitle: item.subtitle,
                   trailing: item.trailing,
                   titleTextStyle: TextStyle(
-                    fontWeight: FontWeight.w500
+                    fontWeight: FontWeight.w600
                   ),
                   onTap: () {
                     Navigator.of(context).pop(index);

@@ -17,9 +17,16 @@ class WuiDrawerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-      height: 48,
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+      margin: EdgeInsets.only(right: 24),
       child: RawMaterialButton(
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(24),
+            bottomRight: Radius.circular(24)
+          )
+        ),
         fillColor: ((active ?? false) == true ? 
           Colors.deepPurple.withOpacity(.2) : 
           Colors.transparent),
@@ -28,17 +35,14 @@ class WuiDrawerButton extends StatelessWidget {
         disabledElevation: 0,
         focusElevation: 0,
         hoverElevation: 0,
-        padding: EdgeInsets.symmetric(horizontal: 8),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8)
-        ),
+        padding: EdgeInsets.fromLTRB(16, 12, 16, 12),
         child: Row(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(right: 20),
               child: IconTheme(
                 data: IconThemeData(
-                  color: (active ?? false) ? Colors.deepPurple : Colors.black.withOpacity(.8),
+                  color: (active ?? false) ? Colors.deepPurple : Colors.black.withOpacity(.7),
                   size: 24
                 ),
                 child: icon
@@ -46,9 +50,9 @@ class WuiDrawerButton extends StatelessWidget {
             ),
             Text(caption, 
               style: Theme.of(context).textTheme.bodyText2.copyWith(
-                color: (active ?? false) ? Colors.deepPurple : Colors.black.withOpacity(.8),
-                fontWeight: FontWeight.w500,
-                fontSize: 14
+                color: (active ?? false) ? Colors.deepPurple : Colors.black.withOpacity(.7),
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
               )
             )
           ],

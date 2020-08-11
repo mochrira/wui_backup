@@ -41,9 +41,9 @@ class WuiListTile extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         child: Row(
           children: [
-            Container(
+            ...(leading != null ? [Container(
               padding: EdgeInsets.only(right: 32),
-              child: leading != null ? Container(
+              child: Container(
                 width: 32,
                 height: 32,
                 child: FittedBox(
@@ -51,8 +51,8 @@ class WuiListTile extends StatelessWidget {
                   fit: BoxFit.fill,
                   child: leading
                 )
-              ) : null
-            ),
+              )
+            )] : []),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
