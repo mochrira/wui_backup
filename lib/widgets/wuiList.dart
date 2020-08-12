@@ -7,10 +7,11 @@ class WuiListView extends StatelessWidget {
     this.children
   });
   
-  static builder({Function itemBuilder, int itemCount}) {
+  static builder({ScrollController controller, Function itemBuilder, int itemCount}) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
       child: ListView.builder(
+        controller: controller,
         itemBuilder: itemBuilder,
         itemCount: itemCount
       )
