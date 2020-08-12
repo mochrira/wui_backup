@@ -60,7 +60,7 @@ class WuiListTile extends StatelessWidget {
                 children: [
                   title != null ? DefaultTextStyle(
                     style: Theme.of(context).textTheme.bodyText2.copyWith(
-                      fontSize: 16,
+                      //fontSize: 16,
                       fontWeight: FontWeight.w600 
                     ).merge(titleTextStyle),
                     child: title

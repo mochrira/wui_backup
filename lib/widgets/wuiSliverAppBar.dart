@@ -72,7 +72,7 @@ class _WuiSliverAppBarState extends State<WuiSliverAppBar> with SingleTickerProv
       flexibleSpace: FlexibleSpaceBar(
         background: SafeArea(
           child: widget.child ?? Container(
-            padding: EdgeInsets.only(top: 56),
+            padding: EdgeInsets.only(top: 56, left: 32, right: 32),
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
