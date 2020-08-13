@@ -4,17 +4,19 @@ class WuiLargeButton extends StatelessWidget {
 
   final Widget child;
   final Function onPressed;
+  final BorderRadius borderRadius;
   WuiLargeButton({
     this.child,
-    this.onPressed
+    this.onPressed,
+    this.borderRadius
   });
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8)
+        borderRadius: borderRadius ?? BorderRadius.circular(8)
       ),
       child: DefaultTextStyle(
         style: Theme.of(context).textTheme.bodyText2.copyWith(
