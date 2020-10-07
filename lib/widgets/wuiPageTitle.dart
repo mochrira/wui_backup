@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class WuiPageTitle extends StatelessWidget {
 
@@ -16,23 +15,23 @@ class WuiPageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        ...(title != null ? [
-          Text(title, 
-            textAlign: TextAlign.center, 
-            style: Theme.of(context).textTheme.headline4.merge(GoogleFonts.nunito())
-          )
-        ] : []),
-        SizedBox(height: 8),
-        ...(subTitle != null ? [Container(
-          constraints: BoxConstraints(
-            maxWidth: 256
-          ),
-          child: (subTitle is String) ? Text(subTitle, style: TextStyle(fontSize: 16), textAlign: TextAlign.center) : subTitle
-        )] : [])
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          ...(title != null ? [
+            Text(title, 
+              textAlign: TextAlign.center, 
+              style: Theme.of(context).textTheme.headline1
+            )
+          ] : []),
+          SizedBox(height: 8),
+          ...(subTitle != null ? [Container(
+            child: (subTitle is String) ? Text(subTitle, textAlign: TextAlign.center) : subTitle
+          )] : [])
+        ],
+      ),
     );
 
   }

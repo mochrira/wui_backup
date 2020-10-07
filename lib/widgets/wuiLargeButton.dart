@@ -14,7 +14,7 @@ class WuiLargeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 40),
       shape: RoundedRectangleBorder(
         borderRadius: borderRadius ?? BorderRadius.circular(8)
       ),

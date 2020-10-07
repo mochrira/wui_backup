@@ -31,3 +31,5 @@ export 'widgets/drawer/wuiDrawer.dart';
 
 export 'widgets/wuiList.dart';
 export 'widgets/wuiSelectorButton.dart';
+
+export 'widgets/wuiFormField.dart';

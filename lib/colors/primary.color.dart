@@ -1,50 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+Color textColor = Color.fromARGB(255, 38, 50, 56);
+Color primaryColor = Colors.deepPurple;
 
 ThemeData wuiThemeData = ThemeData(
+  primarySwatch: Colors.deepPurple,
   scaffoldBackgroundColor: Colors.white,
+  textTheme: TextTheme(
+    headline1: TextStyle(
+      color: textColor,
+      fontWeight: FontWeight.normal,
+      fontFamily: "packages/wui/ProductSans",
+      fontSize: 32
+    ),
+    bodyText2: TextStyle(
+      fontSize: 16
+    )
+  ),
   appBarTheme: AppBarTheme(
+    color: Colors.white,
     textTheme: TextTheme(
-      headline6: GoogleFonts.nunito(
+      headline6: TextStyle(
         fontSize: 20,
-        fontWeight: FontWeight.bold,
-        color: Colors.black87
+        color: textColor,
+        fontFamily: "packages/wui/ProductSans"
       )
     ),
-    elevation: 0,
-    color: Colors.white,
-    actionsIconTheme: IconThemeData(
-      color: Colors.black87
-    ),
     iconTheme: IconThemeData(
-      color: Colors.black87
+      color: textColor
     )
   ),
-  buttonTheme: ButtonThemeData(
-    textTheme: ButtonTextTheme.primary
+  primaryIconTheme: IconThemeData(
+    color: primaryColor
   ),
-  primarySwatch: Colors.deepPurple,
-  textTheme: TextTheme(
-    subtitle1: GoogleFonts.nunito().copyWith(
-      color: Colors.black.withOpacity(.80),
-      fontSize: 14
-    ),
-    subtitle2: GoogleFonts.nunito().copyWith(
-      color: Colors.black.withOpacity(.64),
-      fontSize: 14
-    ),
-    headline4: TextStyle(
-      color: Colors.black.withOpacity(.70)
-    ),
-    bodyText2: GoogleFonts.nunito().copyWith(
-      color: Colors.black.withOpacity(.70),
-      fontSize: 14
-    ),
-    button: GoogleFonts.nunito()
+  iconTheme: IconThemeData(
+    color: textColor
   ),
-  inputDecorationTheme: InputDecorationTheme(
-    labelStyle: GoogleFonts.nunito(
-      fontSize: 14
-    )
-  )
 );
