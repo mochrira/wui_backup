@@ -53,7 +53,6 @@ class _WuiSliverAppBarState extends State<WuiSliverAppBar> with SingleTickerProv
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: Colors.white,
       pinned: true,
       actions: widget.actions,
       expandedHeight: 300,

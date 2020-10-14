@@ -20,13 +20,13 @@ class WuiLargeButton extends StatelessWidget {
       ),
       child: DefaultTextStyle(
         style: Theme.of(context).textTheme.bodyText2.copyWith(
-          color: onPressed != null ? Colors.white : Colors.grey[100],
+          color: onPressed != null ? (Theme.of(context).primaryColor.computeLuminance() > 0.5 ? Colors.black : Colors.white) : Colors.grey[100],
           fontWeight: FontWeight.w500,
           fontSize: 16
         ),
         child: child
       ),
-      fillColor: onPressed != null ? Colors.deepPurple : Colors.deepPurple[200],
+      fillColor: onPressed != null ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(.5),
       onPressed: onPressed,
     );
   }
