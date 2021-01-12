@@ -7,12 +7,18 @@ class WuiHttpException {
   final String message;
   final String code;
   final int status;
+  final Map<String, dynamic> data;
 
   WuiHttpException({
     this.message,
     this.code,
-    this.status
+    this.status,
+    this.data
   });
+
+  toString() {
+    return this.message;
+  }
 
 }
 
@@ -25,19 +31,59 @@ class WuiHttpService {
   WuiHttpService._internal();
 
   get(url, [Map<String, dynamic> options = const {}]) async {
-    return await http.get(url, headers: options != null ? options['headers'] : null);
+    http.Response res = await http.get(url, headers: options != null ? options['headers'] : null);
+    if(res.statusCode >= 400) {
+      Map<String, dynamic> jsonError = json.decode(res.body);
+      throw WuiHttpException(
+        code: jsonError['code'] ?? '',
+        message: jsonError['msg'] ?? '',
+        data: jsonError['data'] ?? {},
+        status: res.statusCode
+      );
+    }
+    return res;
   }
 
   post(url, Map<String, dynamic> data, [Map<String, dynamic> options = const {}]) async {
-    return await http.post(url, body: json.encode(data), headers: options['headers']);
+    http.Response res = await http.post(url, body: json.encode(data), headers: options['headers']);
+    if(res.statusCode >= 400) {
+      Map<String, dynamic> jsonError = json.decode(res.body);
+      throw WuiHttpException(
+        code: jsonError['code'] ?? '',
+        message: jsonError['msg'] ?? '',
+        data: jsonError['data'] ?? {},
+        status: res.statusCode
+      );
+    }
+    return res;
   }
 
   patch(url, Map<String, dynamic> data, [Map<String, dynamic> options = const {}]) async {
-    return await http.patch(url, body: json.encode(data), headers: options['headers']);
+    http.Response res = await http.patch(url, body: json.encode(data), headers: options['headers']);
+    if(res.statusCode >= 400) {
+      Map<String, dynamic> jsonError = json.decode(res.body);
+      throw WuiHttpException(
+        code: jsonError['code'] ?? '',
+        message: jsonError['msg'] ?? '',
+        data: jsonError['data'] ?? {},
+        status: res.statusCode
+      );
+    }
+    return res;
   }
 
   delete(url, [Map<String, dynamic> options = const {}]) async {
-    return await http.delete(url, headers: options['headers']);
+    http.Response res = await http.delete(url, headers: options['headers']);
+    if(res.statusCode >= 400) {
+      Map<String, dynamic> jsonError = json.decode(res.body);
+      throw WuiHttpException(
+        code: jsonError['code'] ?? '',
+        message: jsonError['msg'] ?? '',
+        data: jsonError['data'] ?? {},
+        status: res.statusCode
+      );
+    }
+    return res;
   }
 
 }
