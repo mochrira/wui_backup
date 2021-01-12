@@ -1,39 +1,55 @@
 import 'package:flutter/material.dart';
 
-Color textColor = Color.fromARGB(255, 38, 50, 56);
-Color primaryColor = Colors.deepPurple;
+Color textColor = Colors.black.withOpacity(.67);
 
-ThemeData wuiThemeData = ThemeData(
-  primarySwatch: Colors.deepPurple,
-  scaffoldBackgroundColor: Colors.white,
-  textTheme: TextTheme(
-    headline1: TextStyle(
-      color: textColor,
-      fontWeight: FontWeight.normal,
-      fontFamily: "packages/wui/ProductSans",
-      fontSize: 32
-    ),
-    bodyText2: TextStyle(
-      fontSize: 16
-    )
-  ),
-  appBarTheme: AppBarTheme(
-    color: Colors.white,
-    textTheme: TextTheme(
-      headline6: TextStyle(
-        fontSize: 20,
-        color: textColor,
-        fontFamily: "packages/wui/ProductSans"
+WuiThemeData(context, { primarySwatch: ThemeData }) {
+  return ThemeData(
+    primarySwatch: primarySwatch ?? Colors.deepPurple,
+    scaffoldBackgroundColor: Colors.white,
+    appBarTheme: AppBarTheme(
+      iconTheme: IconThemeData(
+        color: textColor
+      ),
+      actionsIconTheme: IconThemeData(
+        color:textColor
+      ),
+      color: Colors.white,
+      elevation: 0,
+      textTheme: TextTheme(
+        headline6: Theme.of(context).textTheme.headline6.copyWith(
+          color: textColor
+        )
       )
     ),
-    iconTheme: IconThemeData(
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      elevation: 0
+    ),
+    iconTheme: Theme.of(context).iconTheme.copyWith(
       color: textColor
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.black.withOpacity(.08)
+        )
+      )
+    ),
+    textTheme: TextTheme(
+      subtitle1: Theme.of(context).textTheme.subtitle1.copyWith(
+        color: textColor
+      ),
+      headline4: Theme.of(context).textTheme.headline4.copyWith(
+        color: textColor
+      ),
+      headline6: Theme.of(context).textTheme.headline6.copyWith(
+        color: textColor
+      ),
+      bodyText1: Theme.of(context).textTheme.bodyText1.copyWith(
+        color: textColor
+      ),
+      bodyText2: Theme.of(context).textTheme.bodyText2.copyWith(
+        color: textColor
+      ),
     )
-  ),
-  primaryIconTheme: IconThemeData(
-    color: primaryColor
-  ),
-  iconTheme: IconThemeData(
-    color: textColor
-  ),
-);
+  );
+}

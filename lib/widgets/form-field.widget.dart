@@ -43,7 +43,7 @@ class _WuiFormFieldState extends State<WuiFormField> {
   }
 
   Color _labelColor() {
-    return _focusNode.hasFocus ? primaryColor : textColor;
+    return _focusNode.hasFocus ? Colors.deepPurple : textColor;
   }
 
   @override

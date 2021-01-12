@@ -28,9 +28,9 @@ class WuiSelectField extends StatelessWidget {
       child: TextField(
         enabled: enabled ?? true,
         controller: controller,
-        decoration: decoration.copyWith(
+        decoration: decoration != null ? decoration.copyWith(
           suffixIcon: Icon(Icons.keyboard_arrow_down)
-        ),
+        ) : null,
         onTap: () async {
           int index = await showDialog(
             context: context,
@@ -52,7 +52,7 @@ class WuiSelectField extends StatelessWidget {
                           ),
                           (selected != null ? 
                             (selected == index ? 
-                              Icon(Icons.check, color : Colors.deepPurple) : 
+                              Icon(Icons.check) : 
                             Container()) : 
                             Container())
                         ],

@@ -5,7 +5,7 @@ class WuiDialog {
   static Future<dynamic> open(BuildContext context, {
     @required dynamic title,
     @required dynamic message,
-    @required List<dynamic> actions,
+    @required List<dynamic> buttons,
     int defaultAction
   }) async {
     
@@ -15,20 +15,24 @@ class WuiDialog {
       builder: (context) => AlertDialog(
         title: title is String ? Text(title) : title,
         content: message is String ? Text(message) : message,
-        actions: actions.asMap().map((index, item) {
+        actions: buttons.asMap().map((index, item) {
           Widget widget;
 
-          if(actions[index] is String) {
+          if(buttons[index] is String) {
             widget = FlatButton(
+              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 0),
               textTheme: defaultAction == index ? ButtonTextTheme.primary : ButtonTextTheme.normal,
-              child: Text(actions[index]),
+              child: DefaultTextStyle(
+                style: Theme.of(context).textTheme.bodyText1,
+                child: Text(buttons[index])
+              ),
               onPressed: () {
                 Navigator.of(context).pop(index);
               },
             );
           }
           
-          if(actions[index] is Widget) {
+          if(buttons[index] is Widget) {
             widget = Theme(
               data: Theme.of(context).copyWith(
                 buttonTheme: ButtonThemeData(

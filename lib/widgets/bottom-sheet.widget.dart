@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:wui/widgets/wuiListItem.dart';
+import 'package:wui/widgets/list-tile.widget.dart';
 
 class WuiBottomSheetItem {
 
-  final Widget child;
   final Widget trailing;
   final Widget leading;
   final Widget title;
   final Widget subtitle;
   final bool danger;
-  final Function onPressed;
+  final Function onTap;
   dynamic value;
 
   WuiBottomSheetItem({
     this.leading,
     this.trailing,
-    this.child,
     this.title,
     this.subtitle,
     this.danger = false,
-    this.onPressed,
+    this.onTap,
     this.value
   });
 
 }
 
-class WuiModalBottomSheet {
+class WuiBottomSheet {
 
   static Future<int> open(BuildContext context, {
     Widget title,
@@ -43,25 +41,30 @@ class WuiModalBottomSheet {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              (title != null ? Padding(
+              Container(
                 padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
-                child: DefaultTextStyle(child: title, style: Theme.of(context).textTheme.bodyText2.copyWith(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ))
-              ) : Container()),
+                child: DefaultTextStyle(
+                  style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold
+                  ),
+                  child: title
+                )
+              ),
               ...(actions.asMap().map((index, item) {
                 return MapEntry(index, WuiListTile(
-                  isDense: true,
+                  heightMode: WuiListTileHeight.h48,
+                  divider: true,
                   leading: item.leading,
                   title: item.title,
                   subtitle: item.subtitle,
                   trailing: item.trailing,
-                  titleTextStyle: TextStyle(
-                    fontWeight: FontWeight.w600
-                  ),
                   onTap: () {
-                    Navigator.of(context).pop(index);
+                    if(item.onTap == null) {
+                      Navigator.of(context).pop(index);
+                      return;
+                    }
+                    item.onTap();
                   },
                 ));
               }).values.toList())

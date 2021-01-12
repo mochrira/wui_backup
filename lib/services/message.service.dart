@@ -11,11 +11,11 @@ class WuiStreamMessage {
 
 }
 
-class WuiStreamService {
+class WuiMessageService {
 
-  static WuiStreamService  _instance = WuiStreamService._internal();
-  WuiStreamService._internal();
-  factory WuiStreamService() {
+  static WuiMessageService  _instance = WuiMessageService._internal();
+  WuiMessageService._internal();
+  factory WuiMessageService() {
     return _instance;
   }
 

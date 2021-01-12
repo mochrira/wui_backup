@@ -1,35 +1,22 @@
 library wui;
 export 'colors/primary.color.dart';
+export 'services/http.service.dart';
+export 'services/config.service.dart';
+export 'services/message.service.dart';
 
-export 'widgets/wuiBlock.dart';
-export 'widgets/wuiBadge.dart';
-
-export 'services/wuiConfigService.dart';
-export 'services/wuiStreamService.dart';
-
-export 'widgets/wuiPageTitle.dart';
-export 'widgets/wuiLargeButton.dart';
-
-export 'widgets/wuiSliverFab.dart';
-export 'widgets/wuiSliverAppBar.dart';
-export 'widgets/wuiBarFlatButton.dart';
-
-export 'widgets/wuiSliverList.dart';
-export 'widgets/wuiListItem.dart';
-
-export 'widgets/wuiSelectField.dart';
-export 'widgets/wuiLoadingDialog.dart';
-
-export 'widgets/wuiBottomSheet.dart';
-export 'widgets/wuiDialog.dart';
-export 'widgets/wuiSnackbar.dart';
+export 'widgets/bottom-sheet.widget.dart';
+export 'widgets/button-large.widget.dart';
+export 'widgets/dialog.widget.dart';
+export 'widgets/form-field.widget.dart';
+export 'widgets/list-tile.widget.dart';
+export 'widgets/list.widget.dart';
+export 'widgets/loading-dialog.widget.dart';
+export 'widgets/select-field.widget.dart';
+export 'widgets/sliver-appbar.widget.dart';
+export 'widgets/sliver-list.widget.dart';
+export 'widgets/snackbar.dart';
 
 export 'widgets/drawer/wuiDrawerButton.dart';
 export 'widgets/drawer/wuiDrawerHeader.dart';
 export 'widgets/drawer/wuiDrawerType.dart';
 export 'widgets/drawer/wuiDrawer.dart';
-
-export 'widgets/wuiList.dart';
-export 'widgets/wuiSelectorButton.dart';
-
-export 'widgets/wuiFormField.dart';
