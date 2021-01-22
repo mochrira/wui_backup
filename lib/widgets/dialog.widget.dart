@@ -6,7 +6,8 @@ class WuiDialog {
     @required dynamic title,
     @required dynamic message,
     @required List<dynamic> buttons,
-    int defaultAction
+    int defaultAction,
+    EdgeInsets insetPadding,
   }) async {
     
     return await showDialog(
@@ -17,7 +18,7 @@ class WuiDialog {
         content: message is String ? Text(message) : message,
         actions: buttons.asMap().map((index, item) {
           Widget widget;
-
+          
           if(buttons[index] is String) {
             widget = FlatButton(
               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 0),

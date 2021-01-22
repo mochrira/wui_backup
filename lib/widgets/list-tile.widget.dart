@@ -11,6 +11,7 @@ class WuiListTileTheme extends StatelessWidget {
 
   final TextStyle subtitleTextStyle;
   final WuiListTileBorderMode borderMode;
+  final WuiListTileHeight heightMode;
   final Widget child;
 
   WuiListTileTheme({
@@ -18,6 +19,7 @@ class WuiListTileTheme extends StatelessWidget {
     this.titleTextStyle,
     this.subtitleTextStyle,
     this.borderMode,
+    this.heightMode,
     this.child
   });
 
@@ -52,9 +54,10 @@ class WuiListTile extends StatelessWidget {
 
     bool _divider = divider;
     WuiListTileBorderMode _borderMode = borderMode;
+    WuiListTileHeight _heightMode = heightMode;
 
     TextStyle _titleTextStyle = Theme.of(context).textTheme.bodyText1.copyWith(fontWeight: FontWeight.w500);
-    TextStyle _subtitleTextStyle = Theme.of(context).textTheme.bodyText1;
+    TextStyle _subtitleTextStyle = Theme.of(context).textTheme.bodyText1.copyWith(fontWeight: FontWeight.normal);
 
     WuiListTileTheme theme = context.findAncestorWidgetOfExactType<WuiListTileTheme>();
     if(theme != null) {
@@ -70,6 +73,9 @@ class WuiListTile extends StatelessWidget {
       if(theme.subtitleTextStyle != null) {
         _subtitleTextStyle = theme.subtitleTextStyle;
       }
+      if(theme.heightMode != null) {
+        _heightMode = theme.heightMode;
+      }
     }
 
     return RawMaterialButton(
@@ -84,16 +90,16 @@ class WuiListTile extends StatelessWidget {
             color: Colors.black.withOpacity(.08)
           ) : BorderSide.none) : BorderSide.none)
         ),
-        height: WuiListTileHeightValue[heightMode.index],
+        height: WuiListTileHeightValue[_heightMode.index],
         padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            ...(leading != null ? [Container(
               width: 56,
               alignment: Alignment.centerLeft,
               child: leading
-            ),
+            )] : []),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(right: 16),
