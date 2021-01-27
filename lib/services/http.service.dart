@@ -41,7 +41,7 @@ class WuiHttpService {
         status: res.statusCode
       );
     }
-    return res;
+    return json.decode(res.body);
   }
 
   post(url, Map<String, dynamic> data, [Map<String, dynamic> options = const {}]) async {
@@ -55,7 +55,7 @@ class WuiHttpService {
         status: res.statusCode
       );
     }
-    return res;
+    return json.decode(res.body);
   }
 
   patch(url, Map<String, dynamic> data, [Map<String, dynamic> options = const {}]) async {
@@ -69,7 +69,10 @@ class WuiHttpService {
         status: res.statusCode
       );
     }
-    return res;
+    if(res.body.length > 0) {
+      return json.decode(res.body);
+    }
+    return;
   }
 
   delete(url, [Map<String, dynamic> options = const {}]) async {
@@ -83,7 +86,10 @@ class WuiHttpService {
         status: res.statusCode
       );
     }
-    return res;
+    if(res.body.length > 0) {
+      return json.decode(res.body);
+    }
+    return;
   }
 
 }

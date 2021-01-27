@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'form-field.widget.dart';
+
 class WuiSelectField extends StatelessWidget {
 
   final List<String> options;
@@ -25,7 +27,7 @@ class WuiSelectField extends StatelessWidget {
       controller.text = selected >= 0 ? options[selected] : '';
     }
     return Container(
-      child: TextField(
+      child: WuiTextField(
         enabled: enabled ?? true,
         controller: controller,
         decoration: decoration != null ? decoration.copyWith(

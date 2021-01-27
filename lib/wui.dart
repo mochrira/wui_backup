@@ -18,7 +18,7 @@ export 'widgets/sliver-list.widget.dart';
 export 'widgets/snackbar.dart';
 export 'widgets/button.widget.dart';
 
-export 'widgets/drawer/wuiDrawerButton.dart';
-export 'widgets/drawer/wuiDrawerHeader.dart';
-export 'widgets/drawer/wuiDrawerType.dart';
-export 'widgets/drawer/wuiDrawer.dart';
+export 'widgets/drawer/drawer-button.widget.dart';
+export 'widgets/drawer/drawer-header.widget.dart';
+export 'widgets/drawer/drawer-item.widget.dart';
+export 'widgets/drawer/drawer.widget.dart';

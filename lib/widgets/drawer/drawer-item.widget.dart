@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 enum WuiDrawerItemType { button, label, divider }
-enum WuiDrawerMenuType { main, user }
 
 class WuiDrawerItem {
 

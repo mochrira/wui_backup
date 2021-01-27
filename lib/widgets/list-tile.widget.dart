@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-enum WuiListTileHeight {h32, h48, h56, h64}
+enum WuiListTileHeight {h24, h32, h48, h56, h64}
 enum WuiListTileBorderMode {normal, full}
-const List<double> WuiListTileHeightValue = [32, 48, 56, 64];
+const List<double> WuiListTileHeightValue = [24, 32, 48, 56, 64];
 
 class WuiListTileTheme extends StatelessWidget {
 
@@ -29,6 +29,7 @@ class WuiListTileTheme extends StatelessWidget {
 
 class WuiListTile extends StatelessWidget {
 
+  final Key key;
   final Widget trailing;
   final Widget title;
   final Widget subtitle;
@@ -39,6 +40,7 @@ class WuiListTile extends StatelessWidget {
   final bool divider;
 
   WuiListTile({
+    this.key,
     this.leading,
     this.title,
     this.subtitle,
@@ -79,6 +81,11 @@ class WuiListTile extends StatelessWidget {
     }
 
     return RawMaterialButton(
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      constraints: BoxConstraints(
+        minHeight: 0
+      ),
+      padding: EdgeInsets.all(0),
       focusColor: Colors.black.withOpacity(.12),
       highlightColor: Colors.black.withOpacity(.08),
       splashColor: Colors.black.withOpacity(.04),
@@ -87,7 +94,7 @@ class WuiListTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           border: Border(bottom: _divider ? (_borderMode == WuiListTileBorderMode.full ? BorderSide(
-            color: Colors.black.withOpacity(.08)
+            color: Colors.black.withOpacity(.1)
           ) : BorderSide.none) : BorderSide.none)
         ),
         height: WuiListTileHeightValue[_heightMode.index],

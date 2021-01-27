@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wui/widgets/button.widget.dart';
 
-class WuiDialog {
+class WuiDialog extends StatelessWidget { 
 
   static Future<dynamic> open(BuildContext context, {
     @required dynamic title,
@@ -49,6 +50,73 @@ class WuiDialog {
       )
     );
 
+  }
+
+  dynamic title;
+  Widget child;
+  List<dynamic> actions;
+  int defaultActions;
+  Function(int) onPressed;
+
+  WuiDialog({
+    this.title,
+    this.child,
+    this.actions,
+    this.defaultActions,
+    this.onPressed
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      insetPadding: EdgeInsets.all(24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ...[Padding(
+            padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
+            child: DefaultTextStyle(
+              style: Theme.of(context).textTheme.bodyText2.copyWith(
+                fontSize: 20, 
+                fontWeight: FontWeight.w500,
+                color: Colors.black87
+              ),
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 8),
+                child: title is String ? Text(title) : title
+              )
+            ),
+          )],
+          ...[Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+            child: child,
+          )],
+          ...[Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: actions.asMap().map((index, item) {
+                Widget widget;
+                if(actions[index] is String) {
+                  widget = WuiButton(
+                    size: WuiButtonSize.small,
+                    isDense: true,
+                    theme: defaultActions != null ? (defaultActions == index ? WuiButtonTheme.transparentPrimary : WuiButtonTheme.transparent) : WuiButtonTheme.transparent,
+                    child: Text(actions[index]),
+                    onPressed: () {
+                      onPressed(index);
+                    },
+                  );
+                }
+                return MapEntry(index, widget);
+              }).values.toList()
+            ),
+          )]
+        ],
+      ),
+    );
   }
 
 }

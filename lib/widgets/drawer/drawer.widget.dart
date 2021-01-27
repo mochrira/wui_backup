@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wui/wui.dart';
-import './wuiDrawerHeader.dart';
-import './wuiDrawerButton.dart';
+import 'drawer-header.widget.dart';
+import 'drawer-button.widget.dart';
+
+enum WuiDrawerMenuType { main, user }
 
 class WuiDrawer extends StatelessWidget {
 
