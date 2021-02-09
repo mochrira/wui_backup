@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 Color textColor = Colors.black.withOpacity(.67);
+Color surfaceColor = Colors.white;
 
 class WuiThemeData {
 
@@ -9,7 +10,7 @@ class WuiThemeData {
   }) {
     return ThemeData(
       primarySwatch: primarySwatch ?? Colors.deepPurple,
-      scaffoldBackgroundColor: Colors.white,
+      scaffoldBackgroundColor: surfaceColor,
       canvasColor: Colors.white,
       appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(
@@ -19,7 +20,7 @@ class WuiThemeData {
           color:textColor
         ),
         color: Colors.white,
-        elevation: 0,
+        elevation: 4,
         textTheme: TextTheme(
           headline6: Theme.of(context).textTheme.headline6.copyWith(
             color: textColor
@@ -38,6 +39,10 @@ class WuiThemeData {
         ),
         subtitle1: Theme.of(context).textTheme.subtitle1.copyWith(
           color: textColor
+        ),
+        subtitle2: Theme.of(context).textTheme.subtitle2.copyWith(
+          color: textColor,
+          fontSize: 16
         ),
         headline4: Theme.of(context).textTheme.headline4.copyWith(
           color: textColor

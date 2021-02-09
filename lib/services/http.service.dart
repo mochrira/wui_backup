@@ -60,6 +60,7 @@ class WuiHttpService {
 
   patch(url, Map<String, dynamic> data, [Map<String, dynamic> options = const {}]) async {
     http.Response res = await http.patch(url, body: json.encode(data), headers: options['headers']);
+    print(res.statusCode);
     if(res.statusCode >= 400) {
       Map<String, dynamic> jsonError = json.decode(res.body);
       throw WuiHttpException(

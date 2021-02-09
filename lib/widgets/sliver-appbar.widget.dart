@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wui/colors/primary.color.dart';
 
 class WuiSliverAppBar extends StatefulWidget {
 
@@ -50,6 +51,7 @@ class _WuiSliverAppBarState extends State<WuiSliverAppBar> with SingleTickerProv
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      backgroundColor: surfaceColor,
       actions: widget.actions,
       title: AnimatedBuilder(
         animation: _animationController,
@@ -76,7 +78,8 @@ class _WuiSliverAppBarState extends State<WuiSliverAppBar> with SingleTickerProv
               children: [
                 DefaultTextStyle(
                   style: Theme.of(context).textTheme.headline4.copyWith(
-                    fontSize: 28
+                    fontSize: 24,
+                    fontWeight: FontWeight.w500
                   ), 
                   child: Container(
                     constraints: BoxConstraints(

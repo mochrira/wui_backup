@@ -49,13 +49,13 @@ class WuiDrawer extends StatelessWidget {
             if(value.type == WuiDrawerItemType.label) {
               item = Padding(
                 padding: EdgeInsets.only(
-                  top: 16, bottom: 8, right: 16, left: 16
+                  top: 24, bottom: 8, right: 16, left: 16
                 ),
                 child: Text(value.captionText, 
                   style: Theme.of(context).textTheme.bodyText2.copyWith(
-                    color: Colors.black.withOpacity(.7),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14
+                    color: Colors.black.withOpacity(.5),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12
                   )
                 )
               );

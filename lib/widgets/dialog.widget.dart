@@ -52,11 +52,11 @@ class WuiDialog extends StatelessWidget {
 
   }
 
-  dynamic title;
-  Widget child;
-  List<dynamic> actions;
-  int defaultActions;
-  Function(int) onPressed;
+  final dynamic title;
+  final Widget child;
+  final List<dynamic> actions;
+  final int defaultActions;
+  final Function(int) onPressed;
 
   WuiDialog({
     this.title,

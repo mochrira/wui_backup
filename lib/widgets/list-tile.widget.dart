@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-enum WuiListTileHeight {h24, h32, h48, h56, h64}
+enum WuiListTileHeight {h24, h32, h48, h56, h64, h72, h80, h88}
+const List<double> WuiListTileHeightValue = [24, 32, 48, 56, 64, 72, 80, 88];
 enum WuiListTileBorderMode {normal, full}
-const List<double> WuiListTileHeightValue = [24, 32, 48, 56, 64];
 
 class WuiListTileTheme extends StatelessWidget {
 
@@ -81,10 +81,14 @@ class WuiListTile extends StatelessWidget {
     }
 
     return RawMaterialButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8)
+      ),
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       constraints: BoxConstraints(
         minHeight: 0
       ),
+      fillColor: Colors.white,
       padding: EdgeInsets.all(0),
       focusColor: Colors.black.withOpacity(.12),
       highlightColor: Colors.black.withOpacity(.08),
@@ -109,7 +113,6 @@ class WuiListTile extends StatelessWidget {
             )] : []),
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(right: 16),
                 decoration: BoxDecoration(
                   border: Border(bottom: _divider ? (_borderMode == WuiListTileBorderMode.normal ? BorderSide(
                     color: Colors.black.withOpacity(.08)
@@ -127,7 +130,13 @@ class WuiListTile extends StatelessWidget {
                         ],
                       ),
                     ),
-                    trailing ?? Container()
+                    Container(
+                      padding: EdgeInsets.only(right: 16),
+                      child: trailing != null ? Container(
+                        padding: EdgeInsets.only(left: 16),
+                        child: trailing
+                      ) : null
+                    )
                   ],
                 ),
               ),

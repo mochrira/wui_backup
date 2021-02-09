@@ -41,7 +41,7 @@ class WuiBottomSheet {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
+              ...(title != null ? [Container(
                 padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
                 child: DefaultTextStyle(
                   style: Theme.of(context).textTheme.bodyText1.copyWith(
@@ -50,7 +50,7 @@ class WuiBottomSheet {
                   ),
                   child: title
                 )
-              ),
+              )] : []),
               ...(actions.asMap().map((index, item) {
                 return MapEntry(index, WuiListTile(
                   heightMode: WuiListTileHeight.h48,

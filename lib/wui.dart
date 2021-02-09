@@ -17,6 +17,7 @@ export 'widgets/sliver-appbar.widget.dart';
 export 'widgets/sliver-list.widget.dart';
 export 'widgets/snackbar.dart';
 export 'widgets/button.widget.dart';
+export 'widgets/bottom-nav.widget.dart';
 
 export 'widgets/drawer/drawer-button.widget.dart';
 export 'widgets/drawer/drawer-header.widget.dart';
