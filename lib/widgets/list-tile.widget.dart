@@ -81,9 +81,6 @@ class WuiListTile extends StatelessWidget {
     }
 
     return RawMaterialButton(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8)
-      ),
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       constraints: BoxConstraints(
         minHeight: 0
@@ -94,11 +91,12 @@ class WuiListTile extends StatelessWidget {
       highlightColor: Colors.black.withOpacity(.08),
       splashColor: Colors.black.withOpacity(.04),
       elevation: 0,
+      focusElevation: 0,
       onPressed: onTap,
       child: Container(
         decoration: BoxDecoration(
           border: Border(bottom: _divider ? (_borderMode == WuiListTileBorderMode.full ? BorderSide(
-            color: Colors.black.withOpacity(.1)
+            color: Colors.black.withOpacity(.08)
           ) : BorderSide.none) : BorderSide.none)
         ),
         height: WuiListTileHeightValue[_heightMode.index],

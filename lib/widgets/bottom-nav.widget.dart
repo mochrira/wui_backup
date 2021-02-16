@@ -14,27 +14,22 @@ class WuiBottomNavigationBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        height: 64,
-        child: Material(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(16),
-            onTap: onTap,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                icon,
-                SizedBox(height: 4),
-                Text(label, style: TextStyle(
-                  fontSize: 12
-                ))
-              ],
-            )
+    return SizedBox(
+      height: 56,
+      width: 56,
+      child: Material(
+        child: InkWell(
+          borderRadius: BorderRadius.circular(28),
+          onTap: onTap,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              icon,
+              Text(label, overflow: TextOverflow.visible, softWrap: false, style: TextStyle(
+                fontSize: 12
+              ))
+            ],
           )
         )
       )
@@ -60,17 +55,16 @@ class WuiBottomNavigationBar extends StatelessWidget {
     for(int i = 0; i < items.length; i++) {
       localItems.add(items[i]);
       if(!hasMiddle && ((i + 1) == (items.length / 2).floor())) {
-        localItems.add(Expanded(
-          child: SizedBox(
-            height: 60,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: 24),
-                Text('')
-              ],
-            )
+        localItems.add(SizedBox(
+          height: 56,
+          width: 56,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 24),
+              Text('')
+            ],
           )
         ));
         hasMiddle = true;
@@ -85,10 +79,13 @@ class WuiBottomNavigationBar extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       notchMargin: notchMargin,
       shape: shape,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
-        children: _buildItems(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: _buildItems(),
+        ),
       )
     );
   }
