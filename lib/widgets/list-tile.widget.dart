@@ -58,7 +58,7 @@ class WuiListTile extends StatelessWidget {
     WuiListTileBorderMode _borderMode = borderMode;
     WuiListTileHeight _heightMode = heightMode;
 
-    TextStyle _titleTextStyle = Theme.of(context).textTheme.bodyText1.copyWith(fontWeight: FontWeight.w500);
+    TextStyle _titleTextStyle = Theme.of(context).textTheme.bodyText1.copyWith(fontWeight: FontWeight.w500, fontSize: 16);
     TextStyle _subtitleTextStyle = Theme.of(context).textTheme.bodyText1.copyWith(fontWeight: FontWeight.normal);
 
     WuiListTileTheme theme = context.findAncestorWidgetOfExactType<WuiListTileTheme>();
