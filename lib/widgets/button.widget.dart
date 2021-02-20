@@ -93,7 +93,6 @@ class WuiButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(this.size.index);
     return Opacity(
       opacity: onPressed == null ? .2 : 1,
       child: RawMaterialButton(
