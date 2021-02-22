@@ -12,6 +12,7 @@ class WuiThemeData {
       primarySwatch: primarySwatch ?? Colors.deepPurple,
       scaffoldBackgroundColor: surfaceColor,
       canvasColor: Colors.white,
+
       appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(
           color: textColor

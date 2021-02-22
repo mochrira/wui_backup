@@ -92,6 +92,7 @@ class WuiListTile extends StatelessWidget {
       splashColor: Colors.black.withOpacity(.04),
       elevation: 0,
       focusElevation: 0,
+      highlightElevation: 0,
       onPressed: onTap,
       child: Container(
         decoration: BoxDecoration(

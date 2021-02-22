@@ -61,7 +61,7 @@ class WuiBottomSheet {
                   trailing: item.trailing,
                   onTap: () {
                     if(item.onTap == null) {
-                      Navigator.of(context).pop(index);
+                      Navigator.of(context, rootNavigator: useRootNavigator).pop(index);
                       return;
                     }
                     item.onTap();
