@@ -3,9 +3,9 @@ import 'package:intl/intl.dart';
 
 class WuiDatePicker extends StatelessWidget {
 
-  final InputDecoration decoration;
-  final Function onSelect;
-  final DateTime initialDate;
+  final InputDecoration? decoration;
+  final Function? onSelect;
+  final DateTime? initialDate;
 
   WuiDatePicker({
     this.decoration,
@@ -22,19 +22,19 @@ class WuiDatePicker extends StatelessWidget {
     textController.text = DateFormat('d MMM y').format(_initialDate);
 
     return TextField(
-      decoration: decoration != null ? decoration.copyWith(
+      decoration: decoration != null ? decoration!.copyWith(
         suffixIcon: Icon(Icons.date_range)
       ) : null,
       readOnly: true,
       controller: textController,
       onTap: () async {
-        DateTime date = await showDatePicker(
+        DateTime? date = await showDatePicker(
           context: context, 
           initialDate: initialDate ?? DateTime.now(), 
           firstDate: DateTime.fromMillisecondsSinceEpoch(0), 
           lastDate: DateTime.now()
         );
-        onSelect(date);
+        onSelect!(date);
       },
     );
     

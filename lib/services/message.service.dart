@@ -2,7 +2,7 @@ import 'dart:async';
 
 class WuiStreamMessage {
 
-  final String name;
+  final String? name;
   final dynamic value;
   WuiStreamMessage({
     this.name,

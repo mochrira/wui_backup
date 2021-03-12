@@ -4,11 +4,11 @@ import 'drawer.widget.dart';
 
 class WuiDrawerHeaderDecoration {
 
-  String userName;
-  String email;
-  Widget photo;
-  Icon trailingMainIcon;
-  Icon trailingUserIcon;
+  String? userName;
+  String? email;
+  Widget? photo;
+  Icon? trailingMainIcon;
+  Icon? trailingUserIcon;
 
   WuiDrawerHeaderDecoration({
     this.userName,
@@ -22,9 +22,9 @@ class WuiDrawerHeaderDecoration {
 
 class WuiDrawerHeader extends StatelessWidget {
   
-  final Function onPressed;
-  final WuiDrawerMenuType menuType;
-  final WuiDrawerHeaderDecoration decoration;
+  final Function? onPressed;
+  final WuiDrawerMenuType? menuType;
+  final WuiDrawerHeaderDecoration? decoration;
   WuiDrawerHeader({
     this.menuType,
     this.onPressed,
@@ -57,7 +57,7 @@ class WuiDrawerHeader extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8)
               ),
               padding: EdgeInsets.all(8),
-              onPressed: onPressed,
+              onPressed: onPressed as void Function()?,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

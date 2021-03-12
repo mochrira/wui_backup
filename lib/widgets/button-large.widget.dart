@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class WuiLargeButton extends StatelessWidget {
 
-  final Widget child;
-  final Function onPressed;
-  final BorderRadius borderRadius;
+  final Widget? child;
+  final Function? onPressed;
+  final BorderRadius? borderRadius;
   WuiLargeButton({
     this.child,
     this.onPressed,
@@ -20,15 +20,15 @@ class WuiLargeButton extends StatelessWidget {
         borderRadius: borderRadius ?? BorderRadius.circular(8)
       ),
       child: DefaultTextStyle(
-        style: Theme.of(context).textTheme.bodyText2.copyWith(
+        style: Theme.of(context).textTheme.bodyText2!.copyWith(
           color: onPressed != null ? (Theme.of(context).primaryColor.computeLuminance() > 0.5 ? Colors.black : Colors.white) : Colors.grey[100],
           fontWeight: FontWeight.w500,
           fontSize: 16
         ),
-        child: child
+        child: child!
       ),
       fillColor: onPressed != null ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(.5),
-      onPressed: onPressed,
+      onPressed: onPressed as void Function()?,
     );
   }
 }

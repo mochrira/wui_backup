@@ -23,3 +23,5 @@ export 'widgets/drawer/drawer-button.widget.dart';
 export 'widgets/drawer/drawer-header.widget.dart';
 export 'widgets/drawer/drawer-item.widget.dart';
 export 'widgets/drawer/drawer.widget.dart';
+
+export 'theme.dart';

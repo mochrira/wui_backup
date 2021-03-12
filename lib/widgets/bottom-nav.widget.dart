@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class WuiBottomNavigationBarItem {
 
-  final IconData icon;
-  final String label;
+  final IconData? icon;
+  final String? label;
 
   WuiBottomNavigationBarItem({
     this.icon,
@@ -14,9 +14,9 @@ class WuiBottomNavigationBarItem {
 class WuiBottomNavigationBar extends StatelessWidget {
 
   final double notchMargin;
-  final NotchedShape shape;
-  final List<WuiBottomNavigationBarItem> items;
-  final Function(int index) onItemTap;
+  final NotchedShape? shape;
+  final List<WuiBottomNavigationBarItem>? items;
+  final Function(int index)? onItemTap;
   final int activeIndex;
   
   WuiBottomNavigationBar({
@@ -31,13 +31,13 @@ class WuiBottomNavigationBar extends StatelessWidget {
     if(activeIndex == index) {
       return Theme.of(context).primaryColor;
     }
-    return Theme.of(context).textTheme.bodyText2.color;
+    return Theme.of(context).textTheme.bodyText2!.color;
   }
 
   _buildItems(BuildContext context) {
     List<Widget> localItems = [];
     bool hasMiddle = false;
-    for(int i = 0; i < items.length; i++) {
+    for(int i = 0; i < items!.length; i++) {
       localItems.add(
         SizedBox(
           height: 64,
@@ -47,14 +47,14 @@ class WuiBottomNavigationBar extends StatelessWidget {
             child: InkWell(
               borderRadius: BorderRadius.circular(32),
               onTap: () {
-                onItemTap(i);
+                onItemTap!(i);
               },
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(items[i].icon, color: _getTextColor(context, i)),
-                  Text(items[i].label, 
+                  Icon(items![i].icon, color: _getTextColor(context, i)),
+                  Text(items![i].label!, 
                     overflow: TextOverflow.visible, 
                     softWrap: false, 
                     style: TextStyle(
@@ -68,7 +68,7 @@ class WuiBottomNavigationBar extends StatelessWidget {
           )
         )
       );
-      if(!hasMiddle && ((i + 1) == (items.length / 2).floor())) {
+      if(!hasMiddle && ((i + 1) == (items!.length / 2).floor())) {
         localItems.add(SizedBox(
           height: 48,
           width: 64,

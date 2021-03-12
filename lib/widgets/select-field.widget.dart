@@ -5,11 +5,11 @@ import 'form-field.widget.dart';
 
 class WuiSelectField extends StatelessWidget {
 
-  final List<String> options;
-  final InputDecoration decoration;
-  final Function(int index) onChange;
-  final int selected;
-  final bool enabled;
+  final List<String>? options;
+  final InputDecoration? decoration;
+  final Function(int index)? onChange;
+  final int? selected;
+  final bool? enabled;
 
   WuiSelectField({
     this.enabled,
@@ -24,17 +24,17 @@ class WuiSelectField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if(selected != null) {
-      controller.text = selected >= 0 ? options[selected] : '';
+      controller.text = selected! >= 0 ? options![selected!] : '';
     }
     return Container(
       child: WuiTextField(
         enabled: enabled ?? true,
         controller: controller,
-        decoration: decoration != null ? decoration.copyWith(
+        decoration: decoration != null ? decoration!.copyWith(
           suffixIcon: Icon(Icons.keyboard_arrow_down)
         ) : null,
         onTap: () async {
-          int index = await showDialog(
+          int? index = await showDialog(
             context: context,
             builder: (context) => Dialog(
               child: Container(
@@ -69,9 +69,9 @@ class WuiSelectField extends StatelessWidget {
             )
           );
           if(index != null) {
-            controller.text = options[index];
+            controller.text = options![index];
             if(onChange != null) {
-              onChange(index);
+              onChange!(index);
             }
           }
         },

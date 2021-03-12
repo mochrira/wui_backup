@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 
 class WuiTextField extends StatelessWidget {
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final bool outlined;
   final bool obscureText;
-  final InputDecoration decoration;
+  final InputDecoration? decoration;
   final bool border;
-  final FocusNode focusNode;
-  final Function(String) onChanged;
-  final Function onTap;
-  final bool enabled;
+  final FocusNode? focusNode;
+  final Function(String)? onChanged;
+  final Function? onTap;
+  final bool? enabled;
   final bool readOnly;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
 
   WuiTextField({
     this.keyboardType,
@@ -40,7 +40,7 @@ class WuiTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       decoration: decoration != null ? 
-        decoration.copyWith(
+        decoration!.copyWith(
           border: _getBorder(),
           enabledBorder: _getBorder()
         ) : 
@@ -50,7 +50,7 @@ class WuiTextField extends StatelessWidget {
         ),
       enabled: enabled,
       readOnly: readOnly,
-      onTap: onTap,
+      onTap: onTap as void Function()?,
       onChanged: onChanged,
       keyboardType: keyboardType,
     );

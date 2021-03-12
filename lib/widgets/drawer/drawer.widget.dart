@@ -7,12 +7,12 @@ enum WuiDrawerMenuType { main, user }
 
 class WuiDrawer extends StatelessWidget {
 
-  final BuildContext context;
-  final WuiDrawerHeader header;
-  final WuiDrawerMenuType menuType;
-  final List<WuiDrawerItem> userMenu;
-  final List<WuiDrawerItem> mainMenu;
-  final String activeName;
+  final BuildContext? context;
+  final WuiDrawerHeader? header;
+  final WuiDrawerMenuType? menuType;
+  final List<WuiDrawerItem>? userMenu;
+  final List<WuiDrawerItem>? mainMenu;
+  final String? activeName;
 
   WuiDrawer({
     this.context,
@@ -30,9 +30,9 @@ class WuiDrawer extends StatelessWidget {
       child: ListView(
         children: [
           header ?? Container(),
-          ...(menuType == WuiDrawerMenuType.main ? mainMenu : userMenu).asMap().map((key, value) {
+          ...(menuType == WuiDrawerMenuType.main ? mainMenu : userMenu)!.asMap().map((key, value) {
 
-            Widget item;
+            Widget? item;
 
             if(value.type == WuiDrawerItemType.button) {
               item = WuiDrawerButton(
@@ -41,7 +41,7 @@ class WuiDrawer extends StatelessWidget {
                 active: activeName != null ? activeName == value.name : false,
                 onPressed: () {
                   Navigator.of(context).pop();
-                  value.onPressed();
+                  value.onPressed!();
                 }
               );
             }
@@ -51,8 +51,8 @@ class WuiDrawer extends StatelessWidget {
                 padding: EdgeInsets.only(
                   top: 24, bottom: 8, right: 16, left: 16
                 ),
-                child: Text(value.captionText, 
-                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                child: Text(value.captionText!, 
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
                     color: Colors.black.withOpacity(.5),
                     fontWeight: FontWeight.w500,
                     fontSize: 12
@@ -68,7 +68,7 @@ class WuiDrawer extends StatelessWidget {
             return MapEntry(
               key, item
             );
-          }).values.toList()
+          }).values.toList() as Iterable<Widget>
         ]
       ),
     );

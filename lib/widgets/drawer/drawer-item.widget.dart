@@ -4,11 +4,11 @@ enum WuiDrawerItemType { button, label, divider }
 
 class WuiDrawerItem {
 
-  WuiDrawerItemType type;
-  String name;
-  String captionText;
-  Icon icon;
-  Function onPressed;
+  WuiDrawerItemType? type;
+  String? name;
+  String? captionText;
+  Icon? icon;
+  Function? onPressed;
 
   WuiDrawerItem({
     this.type,

@@ -4,10 +4,10 @@ import 'package:http/http.dart' as http;
 
 class WuiHttpException {
 
-  final String message;
-  final String code;
-  final int status;
-  final Map<String, dynamic> data;
+  final String? message;
+  final String? code;
+  final int? status;
+  final Map<String, dynamic>? data;
 
   WuiHttpException({
     this.message,
@@ -17,7 +17,7 @@ class WuiHttpException {
   });
 
   toString() {
-    return this.message;
+    return this.message!;
   }
 
 }
@@ -30,8 +30,8 @@ class WuiHttpService {
   }
   WuiHttpService._internal();
 
-  get(url, [Map<String, dynamic> options = const {}]) async {
-    http.Response res = await http.get(url, headers: options != null ? options['headers'] : null);
+  get(String url, [Map<String, dynamic> options = const {}]) async {
+    http.Response res = await http.get(Uri.parse(url), headers: options['headers']);
     if(res.statusCode >= 400) {
       Map<String, dynamic> jsonError = json.decode(res.body);
       throw WuiHttpException(
@@ -44,8 +44,8 @@ class WuiHttpService {
     return json.decode(res.body);
   }
 
-  post(url, Map<String, dynamic> data, [Map<String, dynamic> options = const {}]) async {
-    http.Response res = await http.post(url, body: json.encode(data), headers: options['headers']);
+  post(url, Map<String, dynamic>? data, [Map<String, dynamic> options = const {}]) async {
+    http.Response res = await http.post(Uri.parse(url), body: json.encode(data), headers: options['headers']);
     if(res.statusCode >= 400) {
       Map<String, dynamic> jsonError = json.decode(res.body);
       throw WuiHttpException(
@@ -59,7 +59,7 @@ class WuiHttpService {
   }
 
   patch(url, Map<String, dynamic> data, [Map<String, dynamic> options = const {}]) async {
-    http.Response res = await http.patch(url, body: json.encode(data), headers: options['headers']);
+    http.Response res = await http.patch(Uri.parse(url), body: json.encode(data), headers: options['headers']);
     print(res.statusCode);
     if(res.statusCode >= 400) {
       Map<String, dynamic> jsonError = json.decode(res.body);
@@ -77,7 +77,7 @@ class WuiHttpService {
   }
 
   delete(url, [Map<String, dynamic> options = const {}]) async {
-    http.Response res = await http.delete(url, headers: options['headers']);
+    http.Response res = await http.delete(Uri.parse(url), headers: options['headers']);
     if(res.statusCode >= 400) {
       Map<String, dynamic> jsonError = json.decode(res.body);
       throw WuiHttpException(

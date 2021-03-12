@@ -3,12 +3,12 @@ import 'package:wui/widgets/list-tile.widget.dart';
 
 class WuiBottomSheetItem {
 
-  final Widget trailing;
-  final Widget leading;
-  final Widget title;
-  final Widget subtitle;
+  final Widget? trailing;
+  final Widget? leading;
+  final Widget? title;
+  final Widget? subtitle;
   final bool danger;
-  final Function onTap;
+  final Function? onTap;
   dynamic value;
 
   WuiBottomSheetItem({
@@ -25,10 +25,10 @@ class WuiBottomSheetItem {
 
 class WuiBottomSheet {
 
-  static Future<int> open(BuildContext context, {
-    Widget title,
+  static Future<int?> open(BuildContext context, {
+    Widget? title,
     bool useRootNavigator = true,
-    List<WuiBottomSheetItem> actions
+    List<WuiBottomSheetItem>? actions
   }) async {
     return await showModalBottomSheet(
       context: context,
@@ -44,14 +44,14 @@ class WuiBottomSheet {
               ...(title != null ? [Container(
                 padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
                 child: DefaultTextStyle(
-                  style: Theme.of(context).textTheme.bodyText1.copyWith(
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     fontSize: 16,
                     fontWeight: FontWeight.bold
                   ),
                   child: title
                 )
               )] : []),
-              ...(actions.asMap().map((index, item) {
+              ...(actions!.asMap().map((index, item) {
                 return MapEntry(index, WuiListTile(
                   heightMode: WuiListTileHeight.h48,
                   divider: true,
@@ -64,7 +64,7 @@ class WuiBottomSheet {
                       Navigator.of(context, rootNavigator: useRootNavigator).pop(index);
                       return;
                     }
-                    item.onTap();
+                    item.onTap!();
                   },
                 ));
               }).values.toList())

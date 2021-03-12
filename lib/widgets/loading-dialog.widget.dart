@@ -9,20 +9,19 @@ class WuiLoadingDialog {
   factory WuiLoadingDialog() {
     return _instance;
   }
-  static StreamController _messageStream;
+  static StreamController _messageStream = StreamController();
   static bool _lock = false;
-  static BuildContext _context;
+  static late BuildContext _context;
 
-  static open(BuildContext context, { String message }) {
+  static open(BuildContext context, { String? message }) {
     _context = context;
-    _messageStream = StreamController();
     _lock = true;
 
     showDialog(
       context: _context,
       barrierDismissible: false,
       useRootNavigator: true,
-      child: WillPopScope(
+      builder: (context) => WillPopScope(
         onWillPop: () async {
           return !_lock;
         },
@@ -36,7 +35,7 @@ class WuiLoadingDialog {
                 children: <Widget>[
                   Center(child: CircularProgressIndicator()),
                   SizedBox(height: 16),
-                  Text(snapshot.data ?? '')
+                  Text(snapshot.data?.toString() ?? '')
                 ],
               ),
             )
@@ -48,7 +47,7 @@ class WuiLoadingDialog {
     _messageStream.add(message);
   }
 
-  static StreamController getMessageStream() {
+  static StreamController? getMessageStream() {
     return _messageStream;
   }
 

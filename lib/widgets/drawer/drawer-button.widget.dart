@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class WuiDrawerButton extends StatelessWidget {
 
-  final String caption;
-  final Icon icon;
-  final Function onPressed;
-  final bool active;
+  final String? caption;
+  final Icon? icon;
+  final Function? onPressed;
+  final bool? active;
 
   WuiDrawerButton({
     this.caption,
@@ -45,11 +45,11 @@ class WuiDrawerButton extends StatelessWidget {
                   color: (active ?? false) ? Colors.deepPurple : Colors.black.withOpacity(.7),
                   size: 24
                 ),
-                child: icon
+                child: icon!
               )
             ),
-            Text(caption, 
-              style: Theme.of(context).textTheme.bodyText2.copyWith(
+            Text(caption!, 
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(
                 color: (active ?? false) ? Colors.deepPurple : Colors.black.withOpacity(.7),
                 fontWeight: FontWeight.w600,
                 fontSize: 14,
@@ -57,7 +57,7 @@ class WuiDrawerButton extends StatelessWidget {
             )
           ],
         ),
-        onPressed: onPressed,
+        onPressed: onPressed as void Function()?,
       )
     );
   }

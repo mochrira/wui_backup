@@ -8,11 +8,11 @@ enum WuiButtonTheme {
 
 class WuiButtonStyle {
 
-  final double height;
-  final TextStyle textStyle;
-  final EdgeInsets padding;
-  final EdgeInsets roundedPadding;
-  final ShapeBorder roundedShape;
+  final double? height;
+  final TextStyle? textStyle;
+  final EdgeInsets? padding;
+  final EdgeInsets? roundedPadding;
+  final ShapeBorder? roundedShape;
 
   WuiButtonStyle({
     this.height,
@@ -27,12 +27,12 @@ class WuiButtonStyle {
 
 class WuiButton extends StatelessWidget {
 
-  final Widget child;
+  final Widget? child;
   final WuiButtonSize size;
   final bool rounded;
-  final Function onPressed; 
+  final Function? onPressed; 
   final WuiButtonTheme theme;
-  final IconData icon;
+  final IconData? icon;
   final bool isDense;
 
   WuiButton({
@@ -45,8 +45,8 @@ class WuiButton extends StatelessWidget {
     this.isDense = false
   });
 
-  Color _getBackground(BuildContext context, index) {
-    List<Color> colors = [Colors.grey[200], Theme.of(context).primaryColor, Colors.transparent, Colors.transparent];
+  Color? _getBackground(BuildContext context, index) {
+    List<Color?> colors = [Colors.grey[200], Theme.of(context).primaryColor, Colors.transparent, Colors.transparent];
     return colors[index];
   }
 
@@ -59,7 +59,7 @@ class WuiButton extends StatelessWidget {
     List<WuiButtonStyle> style = [
       WuiButtonStyle(
         height: isDense ? 32 : 36,
-        textStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+        textStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
           color: _getTextColor(context, theme.index),
           fontSize: 14
         ),
@@ -69,7 +69,7 @@ class WuiButton extends StatelessWidget {
       ),
       WuiButtonStyle(
         height: isDense ? 36 : 44,
-        textStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+        textStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
           color: _getTextColor(context, theme.index),
           fontSize: 16
         ),
@@ -79,7 +79,7 @@ class WuiButton extends StatelessWidget {
       ),
       WuiButtonStyle(
         height: isDense ? 44 : 52,
-        textStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+        textStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
           color: _getTextColor(context, theme.index),
           fontSize: 18
         ),
@@ -100,13 +100,13 @@ class WuiButton extends StatelessWidget {
         highlightElevation: 0,
         focusElevation: 0,
         constraints: BoxConstraints(
-          minHeight: _getStyle(context, this.size.index).height,
-          maxHeight: _getStyle(context, this.size.index).height
+          minHeight: _getStyle(context, this.size.index).height!,
+          maxHeight: _getStyle(context, this.size.index).height!
         ),
         textStyle:_getStyle(context, this.size.index).textStyle,
-        padding: rounded ? _getStyle(context, this.size.index).roundedPadding : _getStyle(context, this.size.index).padding,
+        padding: rounded ? _getStyle(context, this.size.index).roundedPadding! : _getStyle(context, this.size.index).padding!,
         fillColor: _getBackground(context, theme.index),
-        shape: rounded ? _getStyle(context, this.size.index).roundedShape : RoundedRectangleBorder(
+        shape: rounded ? _getStyle(context, this.size.index).roundedShape! : RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
         child: icon != null ? Row(
@@ -114,9 +114,9 @@ class WuiButton extends StatelessWidget {
           children: [ Padding(
             padding: const EdgeInsets.only(right: 12.0),
             child: Icon(icon),
-          ), child ],
+          ), child! ],
         ) : child,
-        onPressed: onPressed
+        onPressed: onPressed as void Function()?
       ),
     );
   }
