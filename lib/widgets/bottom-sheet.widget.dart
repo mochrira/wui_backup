@@ -26,52 +26,41 @@ class WuiBottomSheetItem {
 class WuiBottomSheet {
 
   static Future<int?> open(BuildContext context, {
-    Widget? title,
     bool useRootNavigator = true,
-    List<WuiBottomSheetItem>? actions
+    required Widget child,
   }) async {
     return await showModalBottomSheet(
       context: context,
       useRootNavigator: useRootNavigator,
-      backgroundColor: Colors.transparent,
-      builder: (_) {
-        return Container(
-          color: Colors.white,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              ...(title != null ? [Container(
-                padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
-                child: DefaultTextStyle(
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold
-                  ),
-                  child: title
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20)
+        )
+      ),
+      builder: (_) => Container(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Center(
+                child: Container(
+                  width: 80,
+                  height: 6,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(3),
+                    color: Colors.grey[300]
+                  )
                 )
-              )] : []),
-              ...(actions!.asMap().map((index, item) {
-                return MapEntry(index, WuiListTile(
-                  heightMode: WuiListTileHeight.h48,
-                  divider: true,
-                  leading: item.leading,
-                  title: item.title,
-                  subtitle: item.subtitle,
-                  trailing: item.trailing,
-                  onTap: () {
-                    if(item.onTap == null) {
-                      Navigator.of(context, rootNavigator: useRootNavigator).pop(index);
-                      return;
-                    }
-                    item.onTap!();
-                  },
-                ));
-              }).values.toList())
-            ],
-          ),
-        );
-      }
+              )
+            ),
+            child
+          ],
+        )
+      )
     );
   } 
 
