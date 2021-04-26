@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 enum WuiButtonSize { small, medium, large }
 enum WuiButtonTheme { 
-  normal, primary, transparent, 
-  transparentPrimary
+  normal, primary, transparent, transparentPrimary
 }
 
 class WuiButtonStyle {

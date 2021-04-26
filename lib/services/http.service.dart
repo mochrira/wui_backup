@@ -41,7 +41,7 @@ class WuiHttpService {
         status: res.statusCode
       );
     }
-    return json.decode(res.body);
+    return res.body.isNotEmpty ? json.decode(res.body) : null;
   }
 
   post(url, Map<String, dynamic>? data, [Map<String, dynamic> options = const {}]) async {
@@ -55,7 +55,7 @@ class WuiHttpService {
         status: res.statusCode
       );
     }
-    return json.decode(res.body);
+    return res.body.isEmpty ? null : json.decode(res.body);
   }
 
   patch(url, Map<String, dynamic> data, [Map<String, dynamic> options = const {}]) async {
@@ -70,10 +70,7 @@ class WuiHttpService {
         status: res.statusCode
       );
     }
-    if(res.body.length > 0) {
-      return json.decode(res.body);
-    }
-    return;
+    return res.body.isNotEmpty ? json.decode(res.body) : null;
   }
 
   delete(url, [Map<String, dynamic> options = const {}]) async {
@@ -87,10 +84,7 @@ class WuiHttpService {
         status: res.statusCode
       );
     }
-    if(res.body.length > 0) {
-      return json.decode(res.body);
-    }
-    return;
+    return res.body.isNotEmpty ? json.decode(res.body) : null;
   }
 
 }

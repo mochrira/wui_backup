@@ -6,7 +6,7 @@ class WuiDialog extends StatelessWidget {
   static Future<dynamic> open(BuildContext context, {
     required dynamic title,
     required dynamic message,
-    required List<dynamic> buttons,
+    List<dynamic>? buttons,
     int? defaultAction,
     EdgeInsets? insetPadding,
   }) async {
@@ -17,32 +17,16 @@ class WuiDialog extends StatelessWidget {
       builder: (context) => AlertDialog(
         title: title is String ? Text(title) : title,
         content: message is String ? Text(message) : message,
-        actions: List<Widget>.from(buttons.asMap().map((index, item) {
-          Widget? widget;
-          
-          if(buttons[index] is String) {
-            widget = TextButton(
-              child: DefaultTextStyle(
-                style: Theme.of(context).textTheme.bodyText1!,
-                child: Text(buttons[index])
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(index);
-              },
-            );
-          }
-          
-          if(buttons[index] is Widget) {
-            widget = Theme(
-              data: Theme.of(context).copyWith(
-                buttonTheme: ButtonThemeData(
-                  textTheme: defaultAction == index ? ButtonTextTheme.primary : ButtonTextTheme.normal,
-                ),
-              ),
-              child: widget!
-            );
-          }
-
+        actions: List<Widget>.from(buttons!.asMap().map((index, item) {
+          Widget widget = (item is String ? TextButton(
+            child: DefaultTextStyle(
+              style: Theme.of(context).textTheme.bodyText1!,
+              child: Text(item),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop(index);
+            },
+          ) : item);
           return MapEntry(index, widget);
         }).values.toList())
       )
@@ -95,21 +79,17 @@ class WuiDialog extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: actions!.asMap().map((index, item) {
-                Widget? widget;
-                if(actions![index] is String) {
-                  widget = WuiButton(
-                    size: WuiButtonSize.small,
-                    isDense: true,
-                    theme: defaultActions != null ? (defaultActions == index ? WuiButtonTheme.transparentPrimary : WuiButtonTheme.transparent) : WuiButtonTheme.transparent,
-                    child: Text(actions![index]),
-                    onPressed: () {
-                      onPressed!(index);
-                    },
-                  );
-                }
-                return MapEntry(index, widget);
-              }).values.toList() as List<Widget>
+              children: List<Widget>.from(actions!.asMap().map((index, item) =>
+                MapEntry(index, (item is String ? WuiButton(
+                  size: WuiButtonSize.small,
+                  isDense: true,
+                  theme: defaultActions != null ? (defaultActions == index ? WuiButtonTheme.transparentPrimary : WuiButtonTheme.transparent) : WuiButtonTheme.transparent,
+                  child: Text(actions![index]),
+                  onPressed: () {
+                    onPressed!(index);
+                  },
+                ) : item))
+              ).values.toList())
             ),
           )]
         ],

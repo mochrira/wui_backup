@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-enum WuiListTileHeight {h24, h32, h48, h56, h64, h72, h80, h88}
-const List<double> WuiListTileHeightValue = [24, 32, 48, 56, 64, 72, 80, 88];
+enum WuiListTileHeight {h24, h32, h40, h48, h56, h64, h72, h80, h88}
+const List<double> WuiListTileHeightValue = [24, 32, 40, 48, 56, 64, 72, 80, 88];
 enum WuiListTileBorderMode {normal, full}
 enum WuiListTileMode {normal, fieldValue}
 
@@ -9,7 +9,6 @@ class WuiListTileTheme extends StatelessWidget {
 
   final bool? divider;
   final TextStyle? titleTextStyle;
-
   final TextStyle? subtitleTextStyle;
   final WuiListTileBorderMode? borderMode;
   final WuiListTileHeight? heightMode;
@@ -69,8 +68,9 @@ class WuiListTile extends StatelessWidget {
     WuiListTileMode? _mode = WuiListTileMode.normal;
 
     TextStyle? _titleTextStyle = Theme.of(context).textTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 16);
-    TextStyle? _subtitleTextStyle = Theme.of(context).textTheme.bodyText1!.copyWith(fontWeight: FontWeight.normal);
-    TextStyle _fieldTextStyle = Theme.of(context).textTheme.bodyText1!.copyWith(fontWeight: FontWeight.normal, fontSize: 16, color: Colors.black54);
+    TextStyle? _subtitleTextStyle = Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.normal, fontSize: 14);
+    TextStyle _fieldTextStyle = Theme.of(context).textTheme.bodyText1!.copyWith(fontWeight: FontWeight.normal, fontSize: 14, color: Colors.black54);
+    TextStyle _valueTextStyle = Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.black87);
 
     WuiListTileTheme? theme = context.findAncestorWidgetOfExactType<WuiListTileTheme>();
     if(theme != null) {
@@ -128,7 +128,7 @@ class WuiListTile extends StatelessWidget {
           ) : BorderSide.none) : BorderSide.none)
         ),
         height: WuiListTileHeightValue[_heightMode!.index],
-        padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+        padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -155,6 +155,7 @@ class WuiListTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           ...(title != null ? [DefaultTextStyle(style: _titleTextStyle!, child: title!)] : []),
+                          ...(title != null && subtitle != null ? [SizedBox(height: 2)] : []),
                           ...(subtitle != null ? [DefaultTextStyle(style: _subtitleTextStyle!, child: subtitle!)] : [])
                         ],
                       ) : Row(
@@ -162,7 +163,7 @@ class WuiListTile extends StatelessWidget {
                           ... (field != null ? [DefaultTextStyle(style: _fieldTextStyle, child: field!)] : []),
                           ... (value != null ? [Expanded(
                             child: DefaultTextStyle(
-                              style: _titleTextStyle!, 
+                              style: _valueTextStyle, 
                               textAlign: TextAlign.right, 
                               child: value!
                             ))] : [])

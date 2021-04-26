@@ -19,7 +19,6 @@ class WuiThemeData {
           color:textColor
         ),
         color: Colors.white,
-        elevation: 4,
         textTheme: TextTheme(
           headline6: Theme.of(context).textTheme.headline6!.copyWith(
             color: textColor

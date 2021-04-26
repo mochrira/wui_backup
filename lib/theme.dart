@@ -3,59 +3,51 @@ import 'package:wui/constants.dart';
 
 class WuiTheme {
 
-  static WuiTheme _instance = WuiTheme._internal();
-  WuiTheme._internal();
-  factory WuiTheme() {
-    return _instance;
-  }
-
-  Color? _wTextColor;
-  get textColor => _wTextColor;
-
-  Color? _wHeadingColor;
-  get headingColor => _wHeadingColor;
-
-  Color? _wPrimaryColor;
-  get primaryColor => _wPrimaryColor;
-
-  Color? _wSecondaryColor;
-  get secondaryColor => _wSecondaryColor;
-
-  light(BuildContext context, {
-    Color? textColor,
-    Color? headingColor,
-    Color? primaryColor,
-    Color? secondaryColor
-  }) {
-    _wTextColor = textColor ?? wTextColor;
-    _wHeadingColor = headingColor ?? wHeadingColor;
-    _wPrimaryColor = primaryColor ?? wPrimaryColor;
-    _wSecondaryColor = secondaryColor ?? wSecondaryColor;
-    return _themeData(context);
-  }
-
-  dark(BuildContext context, {
-    Color? textColor,
-    Color? headingColor,
-    Color? primaryColor,
-    Color? secondaryColor
-  }) {
-    _wTextColor = textColor ?? wTextColor;
-    _wHeadingColor = headingColor ?? wHeadingColor;
-    _wPrimaryColor = primaryColor ?? wPrimaryColor;
-    _wSecondaryColor = secondaryColor ?? wSecondaryColor;
-    return _themeData(context);
-  }
-
-  _themeData(BuildContext context) {
+  static light(BuildContext context) {
     return ThemeData(
-      primaryColor: _wPrimaryColor,
+      primarySwatch: wPrimarySwatch,
+      scaffoldBackgroundColor: wScaffoldBackgroundColor,
+      appBarTheme: AppBarTheme(
+        backgroundColor: wAppBarColor,
+        textTheme: Theme.of(context).textTheme.copyWith(
+          headline4: Theme.of(context).textTheme.headline4!.copyWith(
+            color: wBodyText1Color
+          ),
+        ),
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: wBodyText1Color
+        ),
+        actionsIconTheme: IconThemeData(
+          color: wBodyText1Color
+        )
+      ),
       textTheme: Theme.of(context).textTheme.copyWith(
+        headline1: Theme.of(context).textTheme.headline1!.copyWith(
+          fontSize: 72,
+          fontWeight: FontWeight.normal,
+          color: wBodyText1Color
+        ),
+        headline2: Theme.of(context).textTheme.headline2!.copyWith(
+          color: wBodyText1Color
+        ),
+        headline3: Theme.of(context).textTheme.headline3!.copyWith(
+          color: wBodyText1Color
+        ),
+        headline4: Theme.of(context).textTheme.headline4!.copyWith(
+          color: wBodyText1Color
+        ),
+        headline5: Theme.of(context).textTheme.headline5!.copyWith(
+          color: wBodyText1Color,
+          fontSize: 24
+        ),
         bodyText1: Theme.of(context).textTheme.bodyText1!.copyWith(
-          color: _wHeadingColor
+          fontSize: 16,
+          color: wBodyText1Color
         ),
         bodyText2: Theme.of(context).textTheme.bodyText2!.copyWith(
-          color: _wTextColor
+          color: wBodyText2Color,
+          fontSize: 14
         )
       )
     );

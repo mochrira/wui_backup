@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wui/widgets/list-tile.widget.dart';
 
 class WuiBottomSheetItem {
 
